@@ -1,0 +1,20 @@
+export declare const Image: import("react").ForwardRefExoticComponent<{
+    ratio?: string;
+    disabledEffect?: boolean;
+    alt?: string;
+    src?: string;
+    delayTime?: number;
+    threshold?: any;
+    beforeLoad?: any;
+    delayMethod?: any;
+    placeholder?: string;
+    wrapperProps?: any;
+    scrollPosition?: string;
+    effect?: string;
+    visibleByDefault?: boolean;
+    wrapperClassName?: string;
+    useIntersectionObserver?: any;
+    slotProps?: any;
+    sx?: any;
+    other?: any;
+} & import("react").RefAttributes<unknown>>;

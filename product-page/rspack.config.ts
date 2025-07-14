@@ -22,18 +22,15 @@ export default withZephyr()({
   },
 
   devServer: {
-    port: 1001,
+    port: 1002,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    }
   },
   output: {
     // You need to set a unique value that is not equal to other applications
-    uniqueName: "components",
+    uniqueName: "product_page",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:1001/",
+    publicPath: "http://localhost:1002/",
   },
 
   experiments: {

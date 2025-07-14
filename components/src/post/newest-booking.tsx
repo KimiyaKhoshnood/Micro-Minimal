@@ -1,8 +1,8 @@
 import { Avatar, Box, ListItemText } from "@mui/material"
 import dayjs from "dayjs";
-import { Iconify } from '../component/iconify/iconify';
-import { Label } from '../component/label/label';
-import { Image } from '../component/image/image';
+import { Iconify } from "../component/iconify/iconify";
+import { Label } from "../component/label/label";
+import { Image } from "../component/image/image";
 
 export const formatStr = {
   dateTime: 'DD MMM YYYY h:mm a', // 17 Apr 2022 12:00 am
@@ -18,7 +18,7 @@ export const formatStr = {
   },
 };
 
-export function fDateTime(date:any, format?:any) {
+export function fDateTime(date: any, format?: any) {
   if (!date) {
     return null;
   }
@@ -28,14 +28,14 @@ export function fDateTime(date:any, format?:any) {
   return isValid ? dayjs(date).format(format ?? formatStr.dateTime) : 'Invalid time value';
 }
 
-const NewestBooking = ({ item, sx, ...other }:any) => {
+const NewestBooking = ({ item, sx, ...other }: any) => {
   return (
     <Box
       sx={{
         width: 1,
         borderRadius: 2,
         position: 'relative',
-        bgcolor: 'background.neutral',
+        bgcolor: '#f5f6f8',
         ...sx,
       }}
       {...other}
