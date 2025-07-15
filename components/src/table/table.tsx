@@ -1,16 +1,16 @@
-import { Avatar, Box, Button, Card, Checkbox, IconButton, Link, Stack, Tab, Table, TableBody, TableCell, TableRow, Tabs, Tooltip } from "@mui/material"
-import { Label } from "../component/label/label";
-import { Iconify } from "../component/iconify/iconify";
-import { useTable } from "./table/use-table.js";
+import { Avatar, Box, Card, Checkbox, IconButton, Link, Stack, Tab, Table, TableBody, TableCell, TableRow, Tabs, Tooltip } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
-import { UserTableToolbar } from "./table/user-table-toolbar";
-import { UserTableFiltersResult } from "./table/user-table-filters-result";
-import { TableSelectedAction } from "./table/table-selected-action";
+import { Iconify } from "../component/iconify/iconify";
+import { Label } from "../component/label/label";
 import { Scrollbar } from "../component/scrollbar/scrollbar";
-import { TableHeadCustom } from "./table/table-head-custom";
 import { TableEmptyRows } from "./table/table-empty-rows";
+import { TableHeadCustom } from "./table/table-head-custom";
 import { TableNoData } from "./table/table-no-data";
 import { TablePaginationCustom } from "./table/table-pagination-custom";
+import { TableSelectedAction } from "./table/table-selected-action";
+import { useTable } from "./table/use-table";
+import { UserTableFiltersResult } from "./table/user-table-filters-result";
+import { UserTableToolbar } from "./table/user-table-toolbar";
 
 const USER_STATUS_OPTIONS = [
     { value: 'active', label: 'Active' },
@@ -135,28 +135,28 @@ export function useSetState(initialState: IInitialState) {
 function applyFilter({ inputData, comparator, filters }: any): any {
     const { name, status, role } = filters;
 
-    const stabilizedThis = inputData.map((el:any, index:number) => [el, index]);
+    const stabilizedThis = inputData.map((el: any, index: number) => [el, index]);
 
-    stabilizedThis.sort((a:any, b:any) => {
+    stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
         if (order !== 0) return order;
         return a[1] - b[1];
     });
 
-    inputData = stabilizedThis.map((el:any) => el[0]);
+    inputData = stabilizedThis.map((el: any) => el[0]);
 
     if (name) {
         inputData = inputData.filter(
-            (user:any) => user.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+            (user: any) => user.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
         );
     }
 
     if (status !== 'all') {
-        inputData = inputData.filter((user:any) => user.status === status);
+        inputData = inputData.filter((user: any) => user.status === status);
     }
 
     if (role.length) {
-        inputData = inputData.filter((user:any) => role.includes(user.role));
+        inputData = inputData.filter((user: any) => role.includes(user.role));
     }
 
     return inputData;
@@ -212,97 +212,97 @@ function descendingComparator(a: any, b: any, orderBy: any) {
 
 function getComparator(order: any, orderBy: any) {
     return order === 'desc'
-        ? (a:any, b:any) => descendingComparator(a, b, orderBy)
-        : (a:any, b:any) => -descendingComparator(a, b, orderBy);
+        ? (a: any, b: any) => descendingComparator(a, b, orderBy)
+        : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
-function rowInPage(data: any, page: any, rowsPerPage: any) {
-  return data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+function rowInPage(data: any, page: number, rowsPerPage: any) {
+    return data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 }
 
 export const _roles = [
-  `CEO`,
-  `CTO`,
-  `Project Coordinator`,
-  `Team Leader`,
-  `Software Developer`,
-  `Marketing Strategist`,
-  `Data Analyst`,
-  `Product Owner`,
-  `Graphic Designer`,
-  `Operations Manager`,
+    `CEO`,
+    `CTO`,
+    `Project Coordinator`,
+    `Team Leader`,
+    `Software Developer`,
+    `Marketing Strategist`,
+    `Data Analyst`,
+    `Product Owner`,
+    `Graphic Designer`,
+    `Operations Manager`,
 ];
 
-export function UserTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRow }:any) {
-  const confirm = useBoolean();
+export function UserTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRow }: any) {
+    const confirm = useBoolean();
 
-//   const popover = usePopover();
+    //   const popover = usePopover();
 
-  const quickEdit = useBoolean();
+    const quickEdit = useBoolean();
 
-  return (
-    <>
-      <TableRow hover selected={selected} aria-checked={selected} tabIndex={-1}>
-        <TableCell padding="checkbox">
-          <Checkbox id={row.id} checked={selected} onClick={onSelectRow} />
-        </TableCell>
+    return (
+        <>
+            <TableRow hover selected={selected} aria-checked={selected} tabIndex={-1}>
+                <TableCell padding="checkbox">
+                    <Checkbox id={row.id} checked={selected} onClick={onSelectRow} />
+                </TableCell>
 
-        <TableCell>
-          <Stack spacing={2} direction="row" alignItems="center">
-            <Avatar alt={row.name} src={row.avatarUrl} />
+                <TableCell>
+                    <Stack spacing={2} direction="row" alignItems="center">
+                        <Avatar alt={row.name} src={row.avatarUrl} />
 
-            <Stack sx={{ typography: 'body2', flex: '1 1 auto', alignItems: 'flex-start' }}>
-              <Link color="inherit" onClick={onEditRow} sx={{ cursor: 'pointer' }}>
-                {row.name}
-              </Link>
-              <Box component="span" sx={{ color: 'text.disabled' }}>
-                {row.email}
-              </Box>
-            </Stack>
-          </Stack>
-        </TableCell>
+                        <Stack sx={{ typography: 'body2', flex: '1 1 auto', alignItems: 'flex-start' }}>
+                            <Link color="inherit" onClick={onEditRow} sx={{ cursor: 'pointer' }}>
+                                {row.name}
+                            </Link>
+                            <Box component="span" sx={{ color: 'text.disabled' }}>
+                                {row.email}
+                            </Box>
+                        </Stack>
+                    </Stack>
+                </TableCell>
 
-        <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.phoneNumber}</TableCell>
+                <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.phoneNumber}</TableCell>
 
-        <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.company}</TableCell>
+                <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.company}</TableCell>
 
-        <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.role}</TableCell>
+                <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.role}</TableCell>
 
-        <TableCell>
-          <Label
-            variant="soft"
-            color={
-              (row.status === 'active' && 'success') ||
-              (row.status === 'pending' && 'warning') ||
-              (row.status === 'banned' && 'error') ||
-              'default'
-            }
-          >
-            {row.status}
-          </Label>
-        </TableCell>
+                <TableCell>
+                    <Label
+                        variant="soft"
+                        color={
+                            (row.status === 'active' && 'success') ||
+                            (row.status === 'pending' && 'warning') ||
+                            (row.status === 'banned' && 'error') ||
+                            'default'
+                        }
+                    >
+                        {row.status}
+                    </Label>
+                </TableCell>
 
-        <TableCell>
-          <Stack direction="row" alignItems="center">
-            <Tooltip title="Quick Edit" placement="top" arrow>
-              <IconButton
-                color={quickEdit.value ? 'inherit' : 'default'}
-                onClick={quickEdit.onTrue}
-              >
-                <Iconify icon="solar:pen-bold" />
-              </IconButton>
-            </Tooltip>
+                <TableCell>
+                    <Stack direction="row" alignItems="center">
+                        <Tooltip title="Quick Edit" placement="top" arrow>
+                            <IconButton
+                                color={quickEdit.value ? 'inherit' : 'default'}
+                                onClick={quickEdit.onTrue}
+                            >
+                                <Iconify icon="solar:pen-bold" />
+                            </IconButton>
+                        </Tooltip>
 
-            {/* <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
+                        {/* <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
               <Iconify icon="eva:more-vertical-fill" />
             </IconButton> */}
-          </Stack>
-        </TableCell>
-      </TableRow>
+                    </Stack>
+                </TableCell>
+            </TableRow>
 
-      {/* <UserQuickEditForm currentUser={row} open={quickEdit.value} onClose={quickEdit.onFalse} /> */}
+            {/* <UserQuickEditForm currentUser={row} open={quickEdit.value} onClose={quickEdit.onFalse} /> */}
 
-      {/* <CustomPopover
+            {/* <CustomPopover
         open={popover.open}
         anchorEl={popover.anchorEl}
         onClose={popover.onClose}
@@ -332,7 +332,7 @@ export function UserTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRo
         </MenuList>
       </CustomPopover> */}
 
-      {/* <ConfirmDialog
+            {/* <ConfirmDialog
         open={confirm.value}
         onClose={confirm.onFalse}
         title="Delete"
@@ -343,12 +343,12 @@ export function UserTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRo
           </Button>
         }
       /> */}
-    </>
-  );
+        </>
+    );
 }
 
-export function emptyRows(page:any, rowsPerPage:any, arrayLength:any) {
-  return page ? Math.max(0, (1 + page) * rowsPerPage - arrayLength) : 0;
+export function emptyRows(page: any, rowsPerPage: any, arrayLength: any) {
+    return page ? Math.max(0, (1 + page) * rowsPerPage - arrayLength) : 0;
 }
 
 const MainTable = () => {
@@ -407,14 +407,14 @@ const MainTable = () => {
         //     router.push(paths.dashboard.user.edit(id));
         // },
         // [router]
-        (id:any) => {
+        (id: any) => {
             // router.push(paths.dashboard.user.edit(id));
         },
         []
     );
 
     const handleFilterStatus = useCallback(
-        (event:any, newValue:any) => {
+        (event: any, newValue: any) => {
             table.onResetPage();
             filters.setState({ status: newValue });
         },
@@ -480,10 +480,10 @@ const MainTable = () => {
                     dense={table.dense}
                     numSelected={table.selected.length}
                     rowCount={dataFiltered.length}
-                    onSelectAllRows={(checked:any) =>
+                    onSelectAllRows={(checked: any) =>
                         table.onSelectAllRows(
                             checked,
-                            dataFiltered.map((row:any) => row.id)
+                            dataFiltered.map((row: any) => row.id)
                         )
                     }
                     action={
@@ -504,10 +504,10 @@ const MainTable = () => {
                             rowCount={dataFiltered.length}
                             numSelected={table.selected.length}
                             onSort={table.onSort}
-                            onSelectAllRows={(checked:any) =>
+                            onSelectAllRows={(checked: any) =>
                                 table.onSelectAllRows(
                                     checked,
-                                    dataFiltered.map((row:any) => row.id)
+                                    dataFiltered.map((row: any) => row.id)
                                 )
                             }
                         />
@@ -518,7 +518,7 @@ const MainTable = () => {
                                     table.page * table.rowsPerPage,
                                     table.page * table.rowsPerPage + table.rowsPerPage
                                 )
-                                .map((row:any) => (
+                                .map((row: any) => (
                                     <UserTableRow
                                         key={row.id}
                                         row={row}
@@ -540,15 +540,15 @@ const MainTable = () => {
                 </Scrollbar>
             </Box>
 
-            <TablePaginationCustom
-                page={table.page}
+            {/* <TablePaginationCustom
+                page={table.page as any}
                 dense={table.dense}
                 count={dataFiltered.length}
                 rowsPerPage={table.rowsPerPage}
                 onPageChange={table.onChangePage}
                 onChangeDense={table.onChangeDense}
                 onRowsPerPageChange={table.onChangeRowsPerPage}
-            />
+            /> */}
         </Card>
         {/* <ConfirmDialog
             open={confirm.value}

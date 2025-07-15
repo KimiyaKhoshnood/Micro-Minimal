@@ -12,7 +12,7 @@ const iconifyClasses = {
   root: 'mnl__icon__root',
 };
 
-export const Iconify = forwardRef(({ className, width = 20, icon, sx, ...other }: { className?: string, width?: number, sx?: any, icon?: string | IconifyIcon, other?: any }, ref) => {
+export const Iconify = forwardRef(({ className, width = 20, icon, sx, ...other }: { className?: string, width?: number, sx?: any, icon: string | IconifyIcon, other?: any }, ref) => {
   const baseStyles = {
     width,
     height: width,

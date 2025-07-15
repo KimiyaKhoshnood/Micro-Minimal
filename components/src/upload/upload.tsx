@@ -25,6 +25,7 @@ const Upload = ({
   helperText,
   onRemoveAll,
   multiple = false,
+  onDrop,
   ...other
 }: {
   sx?: any,
@@ -38,6 +39,7 @@ const Upload = ({
   helperText?: string,
   onRemoveAll?: () => void,
   multiple?: boolean,
+  onDrop?: any,
   other?: any
 }) => {
   const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({

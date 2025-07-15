@@ -77,7 +77,7 @@ export const Image = forwardRef(
       useIntersectionObserver?: any,
       slotProps?: any,
       sx?: any,
-      other?: any
+      [other:string]: any
     },
     ref
   ) => {

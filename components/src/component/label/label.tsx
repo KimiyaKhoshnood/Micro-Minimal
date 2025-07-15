@@ -10,7 +10,7 @@ import { useTheme } from '@mui/material/styles';
 export const labelClasses = { root: 'mnl__label__root', icon: 'mnl__label__icon' };
 
 export const Label = forwardRef(
-  ({ children, color = 'default', variant = 'soft', startIcon, endIcon, sx, ...other }:{children?:any, color?:string, variant?:string, startIcon?:any, endIcon?:any, sx?:any, other?:any}, ref) => {
+  ({ children, color = 'default', variant = 'soft', startIcon, endIcon, sx, ...other }:{children?:any, color?:string, variant?:string, startIcon?:any, endIcon?:any, sx?:any, [other:string]:any}, ref) => {
     const theme = useTheme();
 
     const iconStyles = {
@@ -43,7 +43,7 @@ export const Label = forwardRef(
           padding: theme.spacing(0, 0.75),
           fontSize: theme.typography.pxToRem(12),
           fontWeight: theme.typography.fontWeightBold,
-          // borderRadius: theme.shape.borderRadius * 0.75,
+          borderRadius: 2,
           transition: theme.transitions.create('all', {
             duration: theme.transitions.duration.shorter,
           }),
