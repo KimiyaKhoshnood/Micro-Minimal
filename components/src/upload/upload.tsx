@@ -40,7 +40,7 @@ const Upload = ({
   onRemoveAll?: () => void,
   multiple?: boolean,
   onDrop?: any,
-  other?: any
+  [other:string]: any
 }) => {
   const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({
     multiple,

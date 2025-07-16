@@ -9,7 +9,7 @@ import { CarouselSlide } from './carousel-slide';
 
 // ----------------------------------------------------------------------
 
-export const CarouselThumbs = forwardRef(({ children, slotProps, options, sx, ...other }: { children?: any, slotProps?: any, options?: any, sx?: any, other?: any }, ref) => {
+export const CarouselThumbs = forwardRef(({ children, slotProps, options, sx, ...other }: { children?: any, slotProps?: any, options?: any, sx?: any, [other:string]: any }, ref) => {
   const axis = options?.axis ?? 'x';
 
   const slideSpacing = options?.slideSpacing ?? '12px';

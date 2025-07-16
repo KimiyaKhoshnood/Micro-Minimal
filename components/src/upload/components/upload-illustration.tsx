@@ -26,7 +26,7 @@ export function BackgroundShape() {
   );
 }
 
-function UploadIllustration({ hideBackground, sx, ...other }: { hideBackground?: any, sx?: any, other?: any }) {
+function UploadIllustration({ hideBackground, sx, ...other }: { hideBackground?: any, sx?: any, [other:string]: any }) {
 
   const PRIMARY_MAIN = "#efefef";
 

@@ -9,7 +9,7 @@ import { Iconify } from '../component/iconify/iconify';
 
 // ----------------------------------------------------------------------
 
-export function UploadBox({ placeholder, error, disabled, sx, ...other }: { placeholder?: any, error?: any, disabled?: any, sx?: any, other?: any }) {
+export function UploadBox({ placeholder, error, disabled, sx, ...other }: { placeholder?: any, error?: any, disabled?: any, sx?: any, [other:string]: any }) {
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
     disabled,
     ...other,

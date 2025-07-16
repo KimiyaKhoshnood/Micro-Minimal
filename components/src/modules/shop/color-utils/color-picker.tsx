@@ -9,7 +9,7 @@ import { Iconify } from '../../../component/iconify/iconify';
 // ----------------------------------------------------------------------
 
 export const ColorPicker = forwardRef(
-  ({ colors, selected, onSelectColor, limit = 'auto', sx, slotProps, ...other }: { colors?: any, selected?: any, onSelectColor?: any, limit?: number|'auto', sx?: () => void, slotProps?: any, other?: any }, ref) => {
+  ({ colors, selected, onSelectColor, limit = 'auto', sx, slotProps, ...other }: { colors?: any, selected?: any, onSelectColor?: any, limit?: number|'auto', sx?: () => void, slotProps?: any, [other:string]: any }, ref) => {
     const singleSelect = typeof selected === 'string';
 
     const handleSelect = useCallback(

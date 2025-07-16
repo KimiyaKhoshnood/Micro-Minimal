@@ -122,7 +122,7 @@ export function calculateAnchorOrigin(arrow:any) {
 
 // ----------------------------------------------------------------------
 
-export function CustomPopover({ open, onClose, children, anchorEl, slotProps, ...other }: { open?: boolean, onClose?: () => void, children?: any, anchorEl?: any, slotProps?: any, other?: any }) {
+export function CustomPopover({ open, onClose, children, anchorEl, slotProps, ...other }: { open?: boolean, onClose?: () => void, children?: any, anchorEl?: any, slotProps?: any, [other:string]: any }) {
   const arrowPlacement:string = slotProps?.arrow?.placement ?? 'top-right';
 
   const arrowSize = slotProps?.arrow?.size ?? 14;

@@ -3,17 +3,18 @@ import NewestBooking from "components/NewestBooking";
 import Upload from "components/Upload";
 import Table from "components/Table";
 import ProductsView from "components/ProductsView";
+import ProductView from "components/ProductView";
 
 import "./index.css";
 import { Products } from "./ProductsData";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const App = () => (
-  <div className="py-10 text-3xl mx-auto max-w-6xl flex flex-col gap-5">
+const App = () => {
+  return <div className="py-10 text-3xl mx-auto max-w-6xl flex flex-col gap-5">
     <BrowserRouter>
       <Routes>
         <Route path="/shop" element={<ProductsView products={Products} />} />
-        <Route path="/shop/:id" element={<div>id shop<ProductsView products={Products} /></div>} />
+        <Route path="/shop/:id" element={<ProductView products={Products[2]} />} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>
@@ -37,7 +38,7 @@ const App = () => (
       </Routes>
     </BrowserRouter>
   </div>
-);
+};
 
 const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
 

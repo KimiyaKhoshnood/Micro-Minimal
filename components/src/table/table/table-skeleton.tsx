@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 
 // ----------------------------------------------------------------------
 
-export function TableSkeleton({ ...other }: { other?: any }) {
+export function TableSkeleton({ ...other }: { [other:string]: any }) {
   return (
     <TableRow {...other}>
       <TableCell colSpan={12}>

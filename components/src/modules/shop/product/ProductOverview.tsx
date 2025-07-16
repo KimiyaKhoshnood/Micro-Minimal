@@ -139,7 +139,7 @@ function ProductDetailsSummary({
     onAddCart?: any,
     onGotoStep?: any,
     disableActions?: any,
-    other?: any
+    [other:string]: any
 }) {
     //   const router = useRouter();
 

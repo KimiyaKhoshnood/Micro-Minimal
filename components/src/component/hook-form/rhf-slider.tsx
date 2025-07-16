@@ -5,7 +5,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 // ----------------------------------------------------------------------
 
-export function RHFSlider({ name, helperText, ...other }: { name?: any, helperText?: any, other?: any }) {
+export function RHFSlider({ name, helperText, ...other }: { name?: any, helperText?: any, [other:string]: any }) {
   const { control } = useFormContext();
 
   return (

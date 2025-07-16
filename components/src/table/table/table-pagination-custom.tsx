@@ -16,7 +16,7 @@ export function TablePaginationCustom({
   dense?: boolean,
   onChangeDense?: any,
   rowsPerPageOptions?: number[],
-  other?: any
+  [other:string]: any
 }) {
   return (
     <Box sx={{ position: 'relative', ...sx }}>

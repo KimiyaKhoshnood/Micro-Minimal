@@ -6,7 +6,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 // ----------------------------------------------------------------------
 
-export function RHFRating({ name, helperText, slotProps, ...other }: { name?: any, helperText?: any, slotProps?: any, other?: any }) {
+export function RHFRating({ name, helperText, slotProps, ...other }: { name?: any, helperText?: any, slotProps?: any, [other:string]: any }) {
   const { control } = useFormContext();
 
   return (

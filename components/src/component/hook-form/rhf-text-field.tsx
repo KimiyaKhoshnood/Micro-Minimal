@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 
 // ----------------------------------------------------------------------
 
-export function RHFTextField({ name, helperText, type, ...other }: { name?: any, helperText?: any, type?: any, other?: any }) {
+export function RHFTextField({ name, helperText, type, ...other }: { name?: any, helperText?: any, type?: any, [other:string]: any }) {
   const { control } = useFormContext();
 
   return (

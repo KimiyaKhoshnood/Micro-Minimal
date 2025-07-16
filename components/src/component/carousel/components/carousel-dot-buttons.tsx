@@ -27,7 +27,7 @@ export function CarouselDotButtons({
   fallbackCount?: number,
   variant?: string,
   fallback?: boolean,
-  other?: any
+  [other:string]: any
 }) {
   const theme = useTheme();
 

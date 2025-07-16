@@ -26,7 +26,7 @@ const StyledContent = styled(Box)(() => ({
 
 // ----------------------------------------------------------------------
 
-export function CarouselSlide({ sx, options, children, ...other }: { sx?: any, options?: any, children?: any, other?: any }) {
+export function CarouselSlide({ sx, options, children, ...other }: { sx?: any, options?: any, children?: any, [other:string]: any }) {
   const slideSize = getSize(options?.slidesToShow);
 
   return (

@@ -28,7 +28,7 @@ export function CarouselArrowBasicButtons({
   disablePrev?: boolean,
   disableNext?: boolean,
   sx?: any,
-  other?: any
+  [other:string]: any
 }) {
   return (
     <Stack
@@ -90,7 +90,7 @@ export function CarouselArrowNumberButtons({
   disablePrev?: boolean,
   disableNext?: boolean,
   sx?: any,
-  other?: any
+  [other:string]: any
 }) {
   const theme = useTheme();
 
@@ -197,7 +197,7 @@ export function CarouselArrowFloatButtons({
 
 // ----------------------------------------------------------------------
 
-export function ArrowButton({ sx, svgIcon, svgSize, options, variant, ...other }: { sx?: any, svgIcon?: any, svgSize?: any, options?: any, variant?: any, disabled?: boolean, onClick: any, other?: any }) {
+export function ArrowButton({ sx, svgIcon, svgSize, options, variant, ...other }: { sx?: any, svgIcon?: any, svgSize?: any, options?: any, variant?: any, disabled?: boolean, onClick: any, [other:string]: any }) {
   const arrowPrev = variant === 'prev';
   const arrowNext = variant === 'next';
 

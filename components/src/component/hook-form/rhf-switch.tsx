@@ -10,7 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ----------------------------------------------------------------------
 
-export function RHFSwitch({ name, helperText, label, slotProps, ...other }: { name?: any, helperText?: any, label?: any, slotProps?: any, other?: any }) {
+export function RHFSwitch({ name, helperText, label, slotProps, ...other }: { name?: any, helperText?: any, label?: any, slotProps?: any, [other:string]: any }) {
   const { control } = useFormContext();
 
   const ariaLabel = `Switch ${name}`;
@@ -54,7 +54,7 @@ export function RHFSwitch({ name, helperText, label, slotProps, ...other }: { na
 
 // ----------------------------------------------------------------------
 
-export function RHFMultiSwitch({ name, label, options, helperText, slotProps, ...other }: { name?: any, label?: any, options?: any, helperText?: any, slotProps?: any, other?: any }) {
+export function RHFMultiSwitch({ name, label, options, helperText, slotProps, ...other }: { name?: any, label?: any, options?: any, helperText?: any, slotProps?: any, [other:string]: any }) {
   const { control } = useFormContext();
 
   const getSelected = (selectedItems?: any, item?: any) =>

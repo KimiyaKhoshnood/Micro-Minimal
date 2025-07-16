@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ----------------------------------------------------------------------
 
-export function RHFRadioGroup({ name, label, options, helperText, slotProps, ...other }: { name?: any, label?: any, options?: any, helperText?: any, slotProps?: any, other?: any }) {
+export function RHFRadioGroup({ name, label, options, helperText, slotProps, ...other }: { name?: any, label?: any, options?: any, helperText?: any, slotProps?: any, [other:string]: any }) {
   const { control } = useFormContext();
 
   const labelledby = `${name}-radio-buttons-group-label`;

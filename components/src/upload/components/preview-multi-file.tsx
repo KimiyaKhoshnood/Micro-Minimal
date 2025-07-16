@@ -226,7 +226,7 @@ export function FileThumbnail({
   imageView?: any,
   slotProps?: any,
   onDownload?: any,
-  other?: any
+  [other:string]: any
 }) {
   const previewUrl = typeof file === 'string' ? file : URL.createObjectURL(file);
 

@@ -83,7 +83,7 @@ export function RHFMultiSelect({
   placeholder?: any
   slotProps?: any
   helperText?: any
-  other?: any
+  [other:string]: any
 }) {
   const { control } = useFormContext();
 

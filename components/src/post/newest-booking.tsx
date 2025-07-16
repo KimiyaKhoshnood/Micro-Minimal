@@ -3,20 +3,7 @@ import dayjs from "dayjs";
 import { Iconify } from "../component/iconify/iconify";
 import { Label } from "../component/label/label";
 import { Image } from "../component/image/image";
-
-export const formatStr = {
-  dateTime: 'DD MMM YYYY h:mm a', // 17 Apr 2022 12:00 am
-  date: 'DD MMM YYYY', // 17 Apr 2022
-  time: 'h:mm a', // 12:00 am
-  split: {
-    dateTime: 'DD/MM/YYYY h:mm a', // 17/04/2022 12:00 am
-    date: 'DD/MM/YYYY', // 17/04/2022
-  },
-  paramCase: {
-    dateTime: 'DD-MM-YYYY h:mm a', // 17-04-2022 12:00 am
-    date: 'DD-MM-YYYY', // 17-04-2022
-  },
-};
+import { formatStr } from "../hooks/hooks";
 
 export function fDateTime(date: any, format?: any) {
   if (!date) {
