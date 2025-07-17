@@ -7,6 +7,7 @@ export const mfConfig = {
     "./ProductCard": "./src/modules/shop/products/ProductCard.tsx",
     "./ProductsView": "./src/modules/shop/products/ProductsView.tsx",
     "./ProductView": "./src/modules/shop/product/ProductView.tsx",
+    "./CheckoutView": "./src/modules/shop/checkout/CheckoutView.tsx",
   },
   shared: ["react", "react-dom"],
 };

@@ -4,6 +4,7 @@ import Upload from "components/Upload";
 import Table from "components/Table";
 import ProductsView from "components/ProductsView";
 import ProductView from "components/ProductView";
+import CheckoutView from "components/CheckoutView";
 
 import "./index.css";
 import { Products } from "./ProductsData";
@@ -14,7 +15,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/shop" element={<ProductsView products={Products} />} />
-        <Route path="/shop/:id" element={<ProductView products={Products[2]} />} />
+        <Route path="/shop/:id" element={<ProductView product={Products[2]} />} />
+        <Route path="/shop/checkout" element={<CheckoutView />} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>

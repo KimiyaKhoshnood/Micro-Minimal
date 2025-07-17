@@ -7,12 +7,15 @@ import ProductsView from "./modules/shop/products/ProductsView";
 import NewestBooking from "./post/newest-booking";
 import MainTable from "./table/table";
 import Upload from "./upload/upload";
+import CheckoutView from "./modules/shop/checkout/CheckoutView";
 
 const App = () => {
   return <div className="text-xs mx-auto max-w-6xl flex flex-col gap-5 py-10">
     <div>Name: components</div>
     <div>Framework: react-19</div>
-    <ProductView product={Products[1]}/>
+    {/* <ProductsView products={Products} /> */}
+    {/* <ProductView product={Products[1]}/> */}
+    <CheckoutView />
     {/* <div className="grid grid-cols-4 gap-5">
       <NewestBooking item={{
         guests: '3-5',
@@ -26,7 +29,6 @@ const App = () => {
         coverUrl: '',
       }} />
     </div> */}
-    {/* <ProductsView products={Products} /> */}
     {/* <div className="grid grid-cols-2 gap-5">
       <Upload />
       <Upload multiple={true} />

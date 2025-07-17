@@ -6,11 +6,11 @@ import { RHFTextField } from './rhf-text-field';
 import { RHFRadioGroup } from './rhf-radio-group';
 import { RHFPhoneInput } from './rhf-phone-input';
 import { RHFAutocomplete } from './rhf-autocomplete';
-// import { RHFCountrySelect } from './rhf-country-select';
 import { RHFSwitch, RHFMultiSwitch } from './rhf-switch';
 import { RHFSelect, RHFMultiSelect } from './rhf-select';
-// import { RHFCheckbox, RHFMultiCheckbox } from './rhf-checkbox';
 import { RHFUpload, RHFUploadBox, RHFUploadAvatar } from './rhf-upload';
+import { RHFCheckbox } from './rhf-checkbox';
+import { RHFCountrySelect } from './rhf-country-select';
 // import { RHFDatePicker, RHFMobileDateTimePicker } from './rhf-date-picker';
 
 // ----------------------------------------------------------------------
@@ -25,7 +25,7 @@ export const Field = {
   Rating: RHFRating,
   Text: RHFTextField,
   Phone: RHFPhoneInput,
-  // Checkbox: RHFCheckbox,
+  Checkbox: RHFCheckbox,
   UploadBox: RHFUploadBox,
   RadioGroup: RHFRadioGroup,
   // DatePicker: RHFDatePicker,
@@ -34,6 +34,6 @@ export const Field = {
   UploadAvatar: RHFUploadAvatar,
   Autocomplete: RHFAutocomplete,
   // MultiCheckbox: RHFMultiCheckbox,
-  // CountrySelect: RHFCountrySelect,
+  CountrySelect: RHFCountrySelect,
   // MobileDateTimePicker: RHFMobileDateTimePicker,
 };
