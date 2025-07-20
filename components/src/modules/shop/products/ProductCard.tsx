@@ -107,7 +107,7 @@ function ProductCard({ product }: { product: { [key: string]: any } }) {
         {name}
       </Link> */}
 
-      <Link href={""} color="inherit" variant="subtitle2" noWrap>
+      <Link href={`/shop/${name}`} color="inherit" variant="subtitle2" noWrap>
         {name}
       </Link>
 

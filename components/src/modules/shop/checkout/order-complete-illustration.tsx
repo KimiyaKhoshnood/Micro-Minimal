@@ -34,7 +34,7 @@ function OrderCompleteIllustration({ hideBackground, sx, ...other }:{ hideBackgr
       {!hideBackground && <BackgroundShape />}
 
       <image
-        href={`http://localhost:1001/assets/illustrations/characters/character-10.webp`}
+        href={`/assets/illustrations/characters/character-10.webp`}
         height="300"
         x="300"
         y="30"

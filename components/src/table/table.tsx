@@ -3,14 +3,14 @@ import { useCallback, useMemo, useState } from "react";
 import { Iconify } from "../component/iconify/iconify";
 import { Label } from "../component/label/label";
 import { Scrollbar } from "../component/scrollbar/scrollbar";
-import { TableEmptyRows } from "./table/table-empty-rows";
-import { TableHeadCustom } from "./table/table-head-custom";
-import { TableNoData } from "./table/table-no-data";
-import { TablePaginationCustom } from "./table/table-pagination-custom";
-import { TableSelectedAction } from "./table/table-selected-action";
-import { useTable } from "./table/use-table";
-import { UserTableFiltersResult } from "./table/user-table-filters-result";
-import { UserTableToolbar } from "./table/user-table-toolbar";
+import { TableEmptyRows } from "../component/table/table-empty-rows";
+import { TableHeadCustom } from "../component/table/table-head-custom";
+import { TableNoData } from "../component/table/table-no-data";
+import { TablePaginationCustom } from "../component/table/table-pagination-custom";
+import { TableSelectedAction } from "../component/table/table-selected-action";
+import { useTable } from "../component/table/use-table";
+import { UserTableFiltersResult } from "../component/table/user-table-filters-result";
+import { UserTableToolbar } from "../component/table/user-table-toolbar";
 
 const USER_STATUS_OPTIONS = [
     { value: 'active', label: 'Active' },

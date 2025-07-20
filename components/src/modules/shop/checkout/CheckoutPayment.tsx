@@ -51,7 +51,7 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
 
     useEffect(() => {
         updateTotalField()
-    }, [checkout])
+    }, [checkout.shipping, checkout.total])
 
     const updateTotalField = () => {
         const totalItems = checkout.items.reduce((total: any, item: any) => total + item.quantity, 0);

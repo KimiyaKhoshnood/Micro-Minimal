@@ -1,4 +1,4 @@
-import { Badge, Box, Container, Typography } from "@mui/material"
+import { Badge, Box, Container, Link, Typography } from "@mui/material"
 import ProductOverview from "./ProductOverview"
 import { Iconify } from "../../../component/iconify/iconify"
 import { CustomBreadcrumbs } from "../../../component/custom-breadcrumbs/custom-breadcrumbs"
@@ -26,13 +26,14 @@ const SUMMARY = [
 
 // ----------------------------------------------------------------------
 
-function ProductView({ product }: { product: { [key: string]: any } }) {
-    console.log(product);
+function ProductView({ product, handleCheckout, checkoutProducts }: { product: { [key: string]: any }, handleCheckout: (data: any) => void, checkoutProducts: { [key: string]: any } }) {
+
     return (
         <Container sx={{ mt: 5, mb: 10 }}>
             <Box
-                // component={RouterLink}
+                component={Link}
                 // href={paths.product.checkout}
+                href={"/shop/checkout/"}
                 sx={{
                     right: 0,
                     top: 112,
@@ -50,7 +51,7 @@ function ProductView({ product }: { product: { [key: string]: any } }) {
                     '&:hover': { opacity: 0.72 },
                 }}
             >
-                <Badge showZero badgeContent={0} color="error" max={99}>
+                <Badge showZero badgeContent={checkoutProducts?.items.length} color="error" max={99}>
                     <Iconify icon="solar:cart-3-bold" width={24} />
                 </Badge>
             </Box>
@@ -64,7 +65,7 @@ function ProductView({ product }: { product: { [key: string]: any } }) {
                 sx={{ mb: 5 }}
             />
 
-            <ProductOverview product={product} />
+            <ProductOverview product={product} handleCheckout={handleCheckout} />
 
             <Box
                 gap={5}

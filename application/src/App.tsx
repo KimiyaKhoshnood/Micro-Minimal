@@ -8,15 +8,28 @@ import CheckoutView from "components/CheckoutView";
 
 import "./index.css";
 import { Products } from "./ProductsData";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+import { Checkout } from "./CheckoutData";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [checkoutProducts, setCheckoutProducts] = useState(() => {
+    const saved = localStorage.getItem("checkout");
+    return saved ? JSON.parse(saved) : Checkout;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("checkout", JSON.stringify(checkoutProducts));
+  }, [checkoutProducts]);
+
+  const handleCheckoutProducts = (data: any) => setCheckoutProducts(data)
+
   return <div className="py-10 text-3xl mx-auto max-w-6xl flex flex-col gap-5">
     <BrowserRouter>
       <Routes>
-        <Route path="/shop" element={<ProductsView products={Products} />} />
-        <Route path="/shop/:id" element={<ProductView product={Products[2]} />} />
-        <Route path="/shop/checkout" element={<CheckoutView />} />
+        <Route path="/shop" element={<ProductsView products={Products} handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
+        <Route path="/shop/:slug" element={<ProductViewComponent handleCheckoutProducts={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
+        <Route path="/shop/checkout" element={<CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts} />} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>
@@ -45,3 +58,11 @@ const App = () => {
 const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
 
 root.render(<App />);
+
+
+export const ProductViewComponent = ({ handleCheckoutProducts, checkoutProducts }: { handleCheckoutProducts: (data: any) => void, checkoutProducts: { [key: string]: any } }) => {
+  const { slug } = useParams()
+  const Product = Products.filter(product => product.name == slug)[0];
+
+  return <ProductView product={Product} handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />
+}

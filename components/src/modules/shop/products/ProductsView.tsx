@@ -1,15 +1,16 @@
-import { Badge, Box, Container, Pagination, paginationClasses, Typography } from "@mui/material"
+import { Badge, Box, Container, Link, Pagination, paginationClasses, Typography } from "@mui/material"
 import ProductCard from "./ProductCard"
 import { ProductFiltersSection } from "./ProductFiltersSection"
 import { Iconify } from "../../../component/iconify/iconify"
 
-function ProductsView({ products }: { products: any[] }) {
+function ProductsView({ products, checkoutProducts }: { products: any[], checkoutProducts: { [key: string]: any } }) {
 
     return (
         <Container sx={{ mb: 15 }}>
             <Box
-                // component={RouterLink}
+                component={Link}
                 // href={paths.product.checkout}
+                href={"/shop/checkout/"}
                 sx={{
                     right: 0,
                     top: 112,
@@ -27,7 +28,7 @@ function ProductsView({ products }: { products: any[] }) {
                     '&:hover': { opacity: 0.72 },
                 }}
             >
-                <Badge showZero badgeContent={products?.length} color="error" max={99}>
+                <Badge showZero badgeContent={checkoutProducts?.items.length} color="error" max={99}>
                     <Iconify icon="solar:cart-3-bold" width={24} />
                 </Badge>
             </Box>

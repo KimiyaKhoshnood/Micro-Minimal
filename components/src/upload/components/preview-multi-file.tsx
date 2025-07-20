@@ -7,7 +7,7 @@ import { Iconify } from '../../component/iconify/iconify';
 import Tooltip from '@mui/material/Tooltip';
 import { ButtonBase, Stack, useTheme } from '@mui/material';
 
-const iconUrl = (icon: any) => `http://localhost:1001/assets/icons/files/${icon}.svg`;
+const iconUrl = (icon: any) => `/assets/icons/files/${icon}.svg`;
 
 export function fileData(file: any) {
   // From url

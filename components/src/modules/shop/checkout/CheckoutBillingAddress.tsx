@@ -94,7 +94,6 @@ function CheckoutBillingAddress({ checkout, handleCheckout }: { checkout: any, h
                                     size="small"
                                     onClick={
                                         () => {
-                                            checkout.onCreateBilling(address)
                                             handleCheckout({
                                                 ...checkout, activeStep: checkout.activeStep + 1, billing: {
                                                     name: address.name,

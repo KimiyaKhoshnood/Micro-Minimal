@@ -99,8 +99,8 @@ export const Image = forwardRef(
         wrapperClassName={wrapperClassName || imageClasses.wrapper}
         placeholderSrc={
           visibleByDefault || disabledEffect
-            ? `http://localhost:1001/assets/transparent.png`
-            : `http://localhost:1001/assets/placeholder.svg`
+            ? `/assets/transparent.png`
+            : `/assets/placeholder.svg`
         }
         sx={{
           width: 1,

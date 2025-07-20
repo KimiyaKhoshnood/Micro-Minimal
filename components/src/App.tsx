@@ -8,14 +8,20 @@ import NewestBooking from "./post/newest-booking";
 import MainTable from "./table/table";
 import Upload from "./upload/upload";
 import CheckoutView from "./modules/shop/checkout/CheckoutView";
+import { Checkout } from "./modules/shop/checkout/CheckoutData";
+import { useState } from "react";
 
 const App = () => {
+  const [checkoutProducts, setCheckoutProducts] = useState(Checkout)
+
+  const handleCheckoutProducts = (data: any) => setCheckoutProducts(data)
+
   return <div className="text-xs mx-auto max-w-6xl flex flex-col gap-5 py-10">
     <div>Name: components</div>
     <div>Framework: react-19</div>
     {/* <ProductsView products={Products} /> */}
     {/* <ProductView product={Products[1]}/> */}
-    <CheckoutView />
+    <CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts}/>
     {/* <div className="grid grid-cols-4 gap-5">
       <NewestBooking item={{
         guests: '3-5',

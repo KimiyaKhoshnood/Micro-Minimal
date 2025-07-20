@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
-import { Iconify } from "../../component/iconify/iconify";
+import { Iconify } from "../iconify/iconify";
 
 // ----------------------------------------------------------------------
 

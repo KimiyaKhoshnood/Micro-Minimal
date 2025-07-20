@@ -29,7 +29,7 @@ export const StyledArrow = styled('span', {
   const backgroundStyles = (color: string) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${size * 3}px ${size * 3}px`,
-    backgroundImage: `url(http://localhost:1001/assets/${color}-blur.png)`,
+    backgroundImage: `url(/assets/${color}-blur.png)`,
     ...(color === 'cyan' && {
       backgroundPosition: 'top right',
     }),

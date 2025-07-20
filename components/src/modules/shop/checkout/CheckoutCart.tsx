@@ -2,7 +2,7 @@ import { Avatar, Box, Button, Card, CardHeader, Divider, Grid, IconButton, Input
 import { Iconify } from "../../../component/iconify/iconify";
 import { EmptyContent } from "../../../component/empty-content/empty-content";
 import { Scrollbar } from "../../../component/scrollbar/scrollbar";
-import { TableHeadCustom } from "../../../table/table/table-head-custom";
+import { TableHeadCustom } from "../../../component/table/table-head-custom";
 import { Label } from "../../../component/label/label";
 import { ColorPreview } from "../color-utils/color-preview";
 import { fCurrency } from "../products/ProductUtils";
@@ -94,7 +94,7 @@ function CheckoutCart({ checkout, handleCheckout }: { checkout: any, handleCheck
                         <EmptyContent
                             title="Cart is empty!"
                             description="Look like you have no items in your shopping cart."
-                            imgUrl={`http://localhost:1001/assets/icons/empty/ic-cart.svg`}
+                            imgUrl={`/assets/icons/empty/ic-cart.svg`}
                             sx={{ pt: 5, pb: 10 }}
                         />
                     ) : (
@@ -110,6 +110,7 @@ function CheckoutCart({ checkout, handleCheckout }: { checkout: any, handleCheck
                 <Button
                     // component={RouterLink}
                     // href={paths.product.root}
+                    href={"/shop"}
                     color="inherit"
                     startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
                 >

@@ -27,7 +27,7 @@ type FormValues = {
     quantity: number;
 };
 
-function ProductOverview({ product }: { product: { [key: string]: any } }) {
+function ProductOverview({ product, handleCheckout }: { product: { [key: string]: any }, handleCheckout: (data: any) => void }) {
     const checkout = {
         "items": [],
         "onAddToCart": (newValue: any) => { },
@@ -43,6 +43,7 @@ function ProductOverview({ product }: { product: { [key: string]: any } }) {
                 {product && (
                     <ProductDetailsSummary
                         product={product}
+                        handleCheckout={handleCheckout}
                         items={checkout.items}
                         onAddCart={checkout.onAddToCart}
                         onGotoStep={checkout.onGotoStep}
@@ -129,6 +130,7 @@ function ProductDetailsCarousel({ images }: { images: any[] }) {
 function ProductDetailsSummary({
     items,
     product,
+    handleCheckout,
     onAddCart,
     onGotoStep,
     disableActions,
@@ -136,10 +138,11 @@ function ProductDetailsSummary({
 }: {
     items?: any,
     product?: any,
+    handleCheckout: (data: any) => void,
     onAddCart?: any,
     onGotoStep?: any,
     disableActions?: any,
-    [other:string]: any
+    [other: string]: any
 }) {
     //   const router = useRouter();
 
@@ -203,6 +206,42 @@ function ProductDetailsSummary({
     });
 
     const handleAddCart = useCallback(() => {
+        console.log({ ...values, colors: [values.colors], subtotal: values.price * values.quantity });
+        console.log();
+
+        handleCheckout((checkout: any) => {
+            const existingItemIndex = checkout.items.findIndex((item: any) => item.name === values.name);
+
+            if (existingItemIndex !== -1) {
+                const existingItem = checkout.items[existingItemIndex];
+
+                const updatedItem = {
+                    ...existingItem,
+                    quantity: existingItem.quantity + values.quantity,
+                    subtotal: (existingItem.quantity + values.quantity) * existingItem.price,
+                    colors: Array.from(new Set([...existingItem.colors, values.colors])), // جلوگیری از رنگ تکراری
+                };
+
+                const updatedItems = [...checkout.items];
+                updatedItems[existingItemIndex] = updatedItem;
+
+                return { ...checkout, items: updatedItems };
+            } else {
+                return {
+                    ...checkout,
+                    items: [
+                        ...checkout.items,
+                        {
+                            ...values,
+                            colors: [values.colors],
+                            subtotal: values.price * values.quantity,
+                        },
+                    ],
+                };
+            }
+        });
+
+
         try {
             onAddCart?.({ ...values, colors: [values.colors], subtotal: values.price * values.quantity });
         } catch (error) {
