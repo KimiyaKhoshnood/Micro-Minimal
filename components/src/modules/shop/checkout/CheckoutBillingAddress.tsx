@@ -37,6 +37,10 @@ const _addressBooks = [
 function CheckoutBillingAddress({ checkout, handleCheckout }: { checkout: any, handleCheckout: any }) {
     const addressForm = useBoolean();
 
+    const onBackStep = () => {
+        handleCheckout((checkout: any) => ({ ...checkout, activeStep: checkout.activeStep - 1 }))
+    }
+
     return (
         <>
             <Grid container spacing={3}>
@@ -113,7 +117,7 @@ function CheckoutBillingAddress({ checkout, handleCheckout }: { checkout: any, h
                         <Button
                             size="small"
                             color="inherit"
-                            onClick={checkout.onBackStep}
+                            onClick={onBackStep}
                             startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
                         >
                             Back

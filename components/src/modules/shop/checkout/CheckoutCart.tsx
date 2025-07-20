@@ -7,6 +7,7 @@ import { Label } from "../../../component/label/label";
 import { ColorPreview } from "../color-utils/color-preview";
 import { fCurrency } from "../products/ProductUtils";
 import { IncrementerButton } from "../product/ProductOverview";
+import { useEffect } from "react";
 
 const TABLE_HEAD = [
     { id: 'product', label: 'Product' },
@@ -18,6 +19,59 @@ const TABLE_HEAD = [
 
 function CheckoutCart({ checkout, handleCheckout }: { checkout: any, handleCheckout: any }) {
     const empty = !checkout.items.length;
+
+    useEffect(() => {
+        updateTotalField()
+    }, [checkout.items, checkout.shipping, checkout.billing, checkout.activeStep, checkout.discount])
+
+    const updateTotalField = () => {
+        const totalItems = checkout.items.reduce((total: any, item: any) => total + item.quantity, 0);
+
+        const subtotal = checkout.items.reduce((total: any, item: any) => total + item.quantity * item.price, 0);
+
+        handleCheckout((checkout: any) => ({
+            ...checkout,
+            totalItems: totalItems,
+            subtotal: subtotal,
+            total: subtotal - checkout.discount + checkout.shipping
+        }));
+    };
+
+    const onIncreaseQuantity = (id: string) => {
+        handleCheckout((checkout: any) => ({
+            ...checkout,
+            items: checkout.items.map((item: any) =>
+                item.id === id
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1
+                    }
+                    : item
+            ),
+        }))
+    }
+
+    const onDecreaseQuantity = (id: string) => {
+        handleCheckout((checkout: any) => ({
+            ...checkout,
+            items: checkout.items.map((item: any) =>
+                item.id === id
+                    ? {
+                        ...item,
+                        quantity: item.quantity - 1
+                    }
+                    : item
+            ),
+        }))
+    }
+
+    const onDeleteCart = (id: string) => {
+        handleCheckout({ ...checkout, items: checkout.items.filter((product: any) => product.id !== id) })
+    }
+
+    const onApplyDiscount = (discount: number) => {
+        handleCheckout((checkout: any) => ({ ...checkout, discount: discount }))
+    }
 
     return (
         <Grid container spacing={3}>
@@ -33,7 +87,7 @@ function CheckoutCart({ checkout, handleCheckout }: { checkout: any, handleCheck
                                 </Typography>
                             </Typography>
                         }
-                        sx={{ mb: 3 }}
+                        // sx={{ mb: 3 }}
                     />
 
                     {empty ? (
@@ -46,9 +100,9 @@ function CheckoutCart({ checkout, handleCheckout }: { checkout: any, handleCheck
                     ) : (
                         <CheckoutCartProductList
                             products={checkout.items}
-                            onDelete={checkout.onDeleteCart}
-                            onIncreaseQuantity={checkout.onIncreaseQuantity}
-                            onDecreaseQuantity={checkout.onDecreaseQuantity}
+                            onDelete={onDeleteCart}
+                            onIncreaseQuantity={onIncreaseQuantity}
+                            onDecreaseQuantity={onDecreaseQuantity}
                         />
                     )}
                 </Card>
@@ -68,7 +122,7 @@ function CheckoutCart({ checkout, handleCheckout }: { checkout: any, handleCheck
                     total={checkout.total}
                     discount={checkout.discount}
                     subtotal={checkout.subtotal}
-                    onApplyDiscount={checkout.onApplyDiscount}
+                    onApplyDiscount={onApplyDiscount}
                 />
 
                 <Button
@@ -100,12 +154,12 @@ function CheckoutCartProductList({
     return (
         <Scrollbar>
             <Table sx={{ minWidth: 720 }}>
-                <TableHeadCustom headLabel={TABLE_HEAD} />
+                <TableHeadCustom headLabel={TABLE_HEAD} sx={{bgcolor:"#f4f6f8"}}/>
 
                 <TableBody>
                     {products.map((row) => (
                         <TableRow>
-                            <TableCell>
+                            <TableCell sx={{ borderStyle:"dashed" ,borderColor:"#00000015"}}>
                                 <Stack spacing={2} direction="row" alignItems="center">
                                     <Avatar
                                         variant="rounded"
@@ -132,9 +186,9 @@ function CheckoutCartProductList({
                                 </Stack>
                             </TableCell>
 
-                            <TableCell>{fCurrency(row.price)}</TableCell>
+                            <TableCell  sx={{ borderStyle:"dashed" ,borderColor:"#00000015"}}>{fCurrency(row.price)}</TableCell>
 
-                            <TableCell>
+                            <TableCell  sx={{ borderStyle:"dashed" ,borderColor:"#00000015"}}>
                                 <Box sx={{ width: 88, textAlign: 'right' }}>
                                     <IncrementerButton
                                         quantity={row.quantity}
@@ -150,9 +204,9 @@ function CheckoutCartProductList({
                                 </Box>
                             </TableCell>
 
-                            <TableCell align="right">{fCurrency(row.price * row.quantity)}</TableCell>
+                            <TableCell  sx={{ borderStyle:"dashed" ,borderColor:"#00000015"}} align="right">{fCurrency(row.price * row.quantity)}</TableCell>
 
-                            <TableCell align="right" sx={{ px: 1 }}>
+                            <TableCell  sx={{ borderStyle:"dashed" ,borderColor:"#00000015", px: 1 }} align="right">
                                 <IconButton href="" onClick={() => onDelete(row.id)}>
                                     <Iconify icon="solar:trash-bin-trash-bold" />
                                 </IconButton>
@@ -246,7 +300,7 @@ export function CheckoutSummary({ total, onEdit, discount, subtotal, shipping, o
                     <TextField
                         fullWidth
                         placeholder="Discount codes / Gifts"
-                        value="DISCOUNT5"
+                        defaultValue="DISCOUNT5"
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">

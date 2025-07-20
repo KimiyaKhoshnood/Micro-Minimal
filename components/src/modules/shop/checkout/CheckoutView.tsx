@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack, Step, StepConnector, StepLabel, stepLabelClasses, Stepper, Typography } from "@mui/material"
+import { Box, Container, Grid, Stack, Step, StepLabel, stepLabelClasses, Stepper, styled, Typography } from "@mui/material"
 import { Checkout } from "./CheckoutData"
 import { Iconify } from "../../../component/iconify/iconify";
 import CheckoutCart from "./CheckoutCart";
@@ -6,14 +6,30 @@ import { useState } from "react";
 import CheckoutBillingAddress from "./CheckoutBillingAddress";
 import CheckoutPayment from "./CheckoutPayment";
 import CheckoutOrderComplete from "./CheckoutOrderComplete";
+import MuiStepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 
 const PRODUCT_CHECKOUT_STEPS = ['Cart', 'Billing & address', 'Payment'];
+
+const StepConnector = styled(MuiStepConnector)(({ theme }) => ({
+    top: 10,
+    left: 'calc(-50% + 20px)',
+    right: 'calc(50% + 20px)',
+    [`& .${stepConnectorClasses.line}`]: {
+        borderTopWidth: 2,
+        borderColor: "#00000015",
+    },
+    [`&.${stepConnectorClasses.active}, &.${stepConnectorClasses.completed}`]: {
+        [`& .${stepConnectorClasses.line}`]: { borderColor: "green" },
+    },
+}));
 
 function CheckoutView() {
     const [checkout, setCheckout] = useState(Checkout)
 
-    const handleCheckout = (data:any) => setCheckout(data)
-    
+    const handleCheckout = (data: any) => setCheckout(data)
+
+    console.log(checkout);
+
     return (
         <Container sx={{ mb: 10 }}>
             <Typography variant="h4" sx={{ my: { xs: 3, md: 5 } }}>
@@ -36,9 +52,10 @@ function CheckoutView() {
                                         justifyContent="center"
                                         sx={{ width: 24, height: 24, color: 'text.disabled' }}
                                     >
-                                        <Box
+                                        {index < checkout.activeStep ? <Iconify icon="eva:checkmark-fill" sx={{ color: 'green' }} />
+                                        : <Box
                                             sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: checkout.activeStep == index ? 'green' : 'currentColor' }}
-                                        />
+                                        />}
                                     </Stack>}
                                     sx={{ [`& .${stepLabelClasses.label}`]: { fontWeight: 'fontWeightSemiBold' } }}
                                 >
@@ -58,7 +75,7 @@ function CheckoutView() {
                 {checkout.activeStep === 2 && <CheckoutPayment checkout={checkout} handleCheckout={handleCheckout} />}
 
                 {checkout.completed && (
-                    <CheckoutOrderComplete open onReset={checkout.onReset} onDownloadPDF={() => { }} />
+                    <CheckoutOrderComplete open onReset={() => setCheckout(Checkout)} onDownloadPDF={() => { }} />
                 )}
             </>
         </Container>

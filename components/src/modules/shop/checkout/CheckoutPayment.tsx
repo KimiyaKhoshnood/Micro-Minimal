@@ -7,6 +7,7 @@ import { Controller, useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z as zod } from "zod";
 import { useBoolean } from "../../../hooks/hooks";
+import { useEffect } from "react";
 
 const DELIVERY_OPTIONS = [
     { value: 0, label: 'Free', description: '5-7 days delivery' },
@@ -47,6 +48,31 @@ export const PaymentSchema = zod.object({
 function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCheckout: any }) {
     // const { control } = useFormContext();
     const newCard = useBoolean();
+
+    useEffect(() => {
+        updateTotalField()
+    }, [checkout])
+
+    const updateTotalField = () => {
+        const totalItems = checkout.items.reduce((total: any, item: any) => total + item.quantity, 0);
+
+        const subtotal = checkout.items.reduce((total: any, item: any) => total + item.quantity * item.price, 0);
+
+        handleCheckout((checkout: any) => ({
+            ...checkout,
+            totalItems: totalItems,
+            subtotal: subtotal,
+            total: checkout.subtotal - checkout.discount + checkout.shipping
+        }));
+    };
+
+    const onBackStep = () => {
+        handleCheckout((checkout: any) => ({ ...checkout, activeStep: checkout.activeStep - 1 }))
+    }
+
+    const onGotoStep = (step:number) => {
+        handleCheckout((checkout: any) => ({ ...checkout, activeStep: step }))
+    }
 
     const defaultValues = { delivery: checkout.shipping, payment: '' };
 
@@ -95,7 +121,7 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
                                             option={option}
                                             selected={field.value === option.value}
                                             onClick={() => {
-                                                handleCheckout({...checkout, shipping: option.value});
+                                                handleCheckout({ ...checkout, shipping: option.value });
                                                 field.onChange(option.value);
                                                 checkout.onApplyShipping(option.value);
                                             }}
@@ -217,7 +243,7 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
                     <Button
                         size="small"
                         color="inherit"
-                        onClick={checkout.onBackStep}
+                        onClick={onBackStep}
                         startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
                     >
                         Back
@@ -229,7 +255,7 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
                         <CardHeader
                             title="Address"
                             action={
-                                <Button size="small" startIcon={<Iconify icon="solar:pen-bold" />} onClick={checkout.onBackStep}>
+                                <Button size="small" startIcon={<Iconify icon="solar:pen-bold" />} onClick={onBackStep}>
                                     Edit
                                 </Button>
                             }
@@ -253,7 +279,7 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
                         subtotal={checkout.subtotal}
                         discount={checkout.discount}
                         shipping={checkout.shipping}
-                        onEdit={() => checkout.onGotoStep(0)}
+                        onEdit={() => onGotoStep(0)}
                     />
 
                     <LoadingButton
@@ -262,7 +288,7 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
                         type="submit"
                         variant="contained"
                         loading={isSubmitting}
-                        onClick={()=>handleCheckout({ ...checkout, completed: true })}
+                        onClick={() => handleCheckout({ ...checkout, completed: true })}
                     >
                         Complete order
                     </LoadingButton>

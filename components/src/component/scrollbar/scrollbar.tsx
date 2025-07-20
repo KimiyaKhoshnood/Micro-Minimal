@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 export const scrollbarClasses = { root: 'mnl__scrollbar__root' };
 
 export const Scrollbar = forwardRef(
-  ({ slotProps, children, fillContent, naturalScroll, sx, ...other }: { slotProps?: any, children?: any, fillContent?: any, naturalScroll?: any, sx?: any, [other:string]: any }, ref) => (
+  ({ slotProps, children, fillContent, naturalScroll, sx, ...other }: { slotProps?: any, children?: any, fillContent?: any, naturalScroll?: any, sx?: any, [other: string]: any }, ref) => (
     <Box
       component={SimpleBar}
       scrollableNodeProps={{ ref }}
@@ -20,6 +20,7 @@ export const Scrollbar = forwardRef(
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
+        '& .simplebar-placeholder': { height: "0 !important" },
         '& .simplebar-wrapper': slotProps?.wrapper,
         '& .simplebar-content-wrapper': slotProps?.contentWrapper,
         '& .simplebar-content': {
