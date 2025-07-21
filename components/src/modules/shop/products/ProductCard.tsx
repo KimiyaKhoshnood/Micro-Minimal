@@ -13,7 +13,7 @@ import { fCurrency } from './ProductUtils';
 
 // ----------------------------------------------------------------------
 
-function ProductCard({ product }: { product: { [key: string]: any } }) {
+function ProductCard({ product, handleCheckout }: { product: { [key: string]: any }, handleCheckout: (data: any) => void }) {
   // const checkout = useCheckoutContext();
 
   const { id, name, coverUrl, price, colors, available, sizes, priceSale, newLabel, saleLabel } =
@@ -21,7 +21,7 @@ function ProductCard({ product }: { product: { [key: string]: any } }) {
 
   // const linkTo = paths.product.details(id);
 
-  const handleAddCart = async () => {
+  const handleAddCart = () => {
     const newProduct = {
       id,
       name,
@@ -33,7 +33,7 @@ function ProductCard({ product }: { product: { [key: string]: any } }) {
       quantity: 1,
     };
     try {
-      // checkout.onAddToCart(newProduct);
+      handleCheckout((checkout: any) => ({ ...checkout, items: [...(checkout.items), newProduct] }))
       console.log(newProduct);
     } catch (error) {
       console.error(error);

@@ -100,7 +100,6 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
         <Form methods={methods} onSubmit={onSubmit}>
             <Grid container spacing={3}>
                 <Grid size={{ xs: 12, md: 8 }}>
-                    {/* <CheckoutDelivery onApplyShipping={checkout.onApplyShipping} options={DELIVERY_OPTIONS} /> */}
                     <Card>
                         <CardHeader title="Delivery" />
 
@@ -123,7 +122,6 @@ function CheckoutPayment({ checkout, handleCheckout }: { checkout: any, handleCh
                                             onClick={() => {
                                                 handleCheckout({ ...checkout, shipping: option.value });
                                                 field.onChange(option.value);
-                                                checkout.onApplyShipping(option.value);
                                             }}
                                         />
                                     ))}

@@ -9,8 +9,8 @@ import { ColorPicker } from '../color-utils/color-picker';
 import { Scrollbar } from '../../../component/scrollbar/scrollbar';
 import { CustomPopover } from '../../../component/custom-popover/custom-popover';
 import { usePopover } from '../../../component/custom-popover/use-popover';
-import { chipProps, FiltersResult } from '../../../table/filters-result/filters-result';
-import { FiltersBlock } from '../../../table/filters-result/filters-block';
+import { FiltersBlock } from '../../../component/filters-result/filters-block';
+import { chipProps, FiltersResult } from '../../../component/filters-result/filters-result';
 
 export const PRODUCT_COLOR_OPTIONS = [
     '#FF4842',

@@ -28,7 +28,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/shop" element={<ProductsView products={Products} handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
-        <Route path="/shop/:slug" element={<ProductViewComponent handleCheckoutProducts={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
+        <Route path="/shop/:slug" element={<ProductViewComponent handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
         <Route path="/shop/checkout" element={<CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts} />} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
@@ -60,9 +60,9 @@ const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
 root.render(<App />);
 
 
-export const ProductViewComponent = ({ handleCheckoutProducts, checkoutProducts }: { handleCheckoutProducts: (data: any) => void, checkoutProducts: { [key: string]: any } }) => {
+export const ProductViewComponent = ({ handleCheckout, checkoutProducts }: { handleCheckout: (data: any) => void, checkoutProducts: { [key: string]: any } }) => {
   const { slug } = useParams()
   const Product = Products.filter(product => product.name == slug)[0];
 
-  return <ProductView product={Product} handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />
+  return <ProductView product={Product} handleCheckout={handleCheckout} checkoutProducts={checkoutProducts} />
 }

@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard"
 import { ProductFiltersSection } from "./ProductFiltersSection"
 import { Iconify } from "../../../component/iconify/iconify"
 
-function ProductsView({ products, checkoutProducts }: { products: any[], checkoutProducts: { [key: string]: any } }) {
+function ProductsView({ products, checkoutProducts, handleCheckout }: { products: any[], checkoutProducts: { [key: string]: any }, handleCheckout: (data: any) => void }) {
 
     return (
         <Container sx={{ mb: 15 }}>
@@ -49,7 +49,7 @@ function ProductsView({ products, checkoutProducts }: { products: any[], checkou
                     lg: 'repeat(4, 1fr)',
                 }}
             >
-                {products.map((product) => <ProductCard product={product} />)}
+                {products.map((product) => <ProductCard product={product} handleCheckout={handleCheckout} />)}
             </Box>
 
             {products.length > 8 && (
