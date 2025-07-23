@@ -8,6 +8,8 @@ export const mfConfig = {
     "./ProductsView": "./src/modules/shop/products/ProductsView.tsx",
     "./ProductView": "./src/modules/shop/product/ProductView.tsx",
     "./CheckoutView": "./src/modules/shop/checkout/CheckoutView.tsx",
+    "./DashboardLayoutView": "./src/modules/dashboard/dashboardLayoutView/DashboardLayoutView.tsx",
+    "./ShopDashboardListView": "./src/modules/shop-dashboard/shop-dashboard-list/shop-dashboard-list-view.tsx",
   },
   shared: ["react", "react-dom"],
 };

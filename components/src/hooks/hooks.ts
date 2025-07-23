@@ -85,17 +85,17 @@ export function useTabs(defaultValue: any) {
 }
 
 export const formatStr = {
-  dateTime: 'DD MMM YYYY h:mm a', // 17 Apr 2022 12:00 am
-  date: 'DD MMM YYYY', // 17 Apr 2022
-  time: 'h:mm a', // 12:00 am
-  split: {
-    dateTime: 'DD/MM/YYYY h:mm a', // 17/04/2022 12:00 am
-    date: 'DD/MM/YYYY', // 17/04/2022
-  },
-  paramCase: {
-    dateTime: 'DD-MM-YYYY h:mm a', // 17-04-2022 12:00 am
-    date: 'DD-MM-YYYY', // 17-04-2022
-  },
+    dateTime: 'DD MMM YYYY h:mm a', // 17 Apr 2022 12:00 am
+    date: 'DD MMM YYYY', // 17 Apr 2022
+    time: 'h:mm a', // 12:00 am
+    split: {
+        dateTime: 'DD/MM/YYYY h:mm a', // 17/04/2022 12:00 am
+        date: 'DD/MM/YYYY', // 17/04/2022
+    },
+    paramCase: {
+        dateTime: 'DD-MM-YYYY h:mm a', // 17-04-2022 12:00 am
+        date: 'DD-MM-YYYY', // 17-04-2022
+    },
 };
 
 export function fDate(date: Date, format?: any) {
@@ -106,4 +106,18 @@ export function fDate(date: Date, format?: any) {
     const isValid = dayjs(date).isValid();
 
     return isValid ? dayjs(date).format(format ?? formatStr.date) : 'Invalid time value';
+}
+
+// ----------------------------------------------------------------------
+
+/** output: 12:00 am
+ */
+export function fTime(date?: any, format?: any) {
+    if (!date) {
+        return null;
+    }
+
+    const isValid = dayjs(date).isValid();
+
+    return isValid ? dayjs(date).format(format ?? formatStr.time) : 'Invalid time value';
 }

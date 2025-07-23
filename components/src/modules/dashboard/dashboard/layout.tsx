@@ -1,4 +1,5 @@
 'use client';
+import "../../../index.css";
 
 import { useMemo } from 'react';
 
@@ -15,7 +16,6 @@ import { varAlpha, stylesMode } from '../../../theme/styles/utils';
 import { bulletColor } from '../nav-section/css-vars';
 // import { useSettingsContext } from 'src/components/settings';
 
-import { Main } from './main';
 import { NavMobile } from './nav-mobile';
 import { layoutClasses } from '../classes';
 import { NavVertical } from './nav-vertical';
@@ -26,14 +26,15 @@ import { _workspaces } from '../config-nav-workspace';
 import { LayoutSection } from '../core/layout-section';
 import { navData as dashboardNavData } from '../config-nav-dashboard';
 import { useBoolean } from '../../../hooks/hooks';
+import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-export function DashboardLayout({ sx, children, data }: { sx?: any, children?: any, data?: any }) {
+function DashboardLayout({ sx, children, data }: { sx?: any, children?: any, data?: any }) {
   const theme = useTheme();
 
   console.log(theme);
-  
+
   const mobileNavOpen = useBoolean();
 
   // const settings = useSettingsContext();
@@ -43,7 +44,7 @@ export function DashboardLayout({ sx, children, data }: { sx?: any, children?: a
   const settings = {
     navLayout: 'vertical',
     navColor: "integrate",
-    onUpdateField: (field?:any, value?:any) => {
+    onUpdateField: (field?: any, value?: any) => {
       console.log(field, value); // فقط تست کن
     },
   };
@@ -196,12 +197,26 @@ export function DashboardLayout({ sx, children, data }: { sx?: any, children?: a
           ...sx,
         }}
       >
-        {/* delete comment */}
-        <Main isNavHorizontal={isNavHorizontal}>{children}</Main>
+        <Box
+          component="main"
+          className={layoutClasses.main}
+          sx={{
+            display: 'flex',
+            flex: '1 1 auto',
+            flexDirection: 'column',
+            ...(isNavHorizontal && {
+              '--layout-dashboard-content-pt': '40px',
+            }),
+          }}
+        >
+          {children}
+        </Box>
       </LayoutSection>
     </>
   );
 }
+
+export default DashboardLayout
 
 // ----------------------------------------------------------------------
 
@@ -275,3 +290,41 @@ function useNavColorVars(theme?: any, settings?: any) {
     settings.navLayout,
   ]);
 }
+
+// export function DashboardContent({ sx, children, disablePadding, maxWidth = 'lg', ...other }: { sx?: any, children?: any, disablePadding?: any, maxWidth?: false | Breakpoint, [other: string]: any }) {
+//   const theme = useTheme();
+
+//   // const settings = useSettingsContext();
+
+//   const layoutQuery = 'lg';
+
+//   return (
+//     <Container
+//       className={layoutClasses.content}
+//       maxWidth={maxWidth}
+//       sx={{
+//         display: 'flex',
+//         flex: '1 1 auto',
+//         flexDirection: 'column',
+//         pt: 'var(--layout-dashboard-content-pt)',
+//         pb: 'var(--layout-dashboard-content-pb)',
+//         [theme.breakpoints.up(layoutQuery)]: {
+//           px: 'var(--layout-dashboard-content-px)',
+//         },
+//         ...(disablePadding && {
+//           p: {
+//             xs: 0,
+//             sm: 0,
+//             md: 0,
+//             lg: 0,
+//             xl: 0,
+//           },
+//         }),
+//         ...sx,
+//       }}
+//       {...other}
+//     >
+//       {children}
+//     </Container>
+//   );
+// }

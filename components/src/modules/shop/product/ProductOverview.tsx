@@ -206,9 +206,6 @@ function ProductDetailsSummary({
     });
 
     const handleAddCart = useCallback(() => {
-        console.log({ ...values, colors: [values.colors], subtotal: values.price * values.quantity });
-        console.log();
-
         handleCheckout((checkout: any) => {
             const existingItemIndex = checkout.items.findIndex((item: any) => item.name === values.name);
 

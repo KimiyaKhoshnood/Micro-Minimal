@@ -5,6 +5,8 @@ import Table from "components/Table";
 import ProductsView from "components/ProductsView";
 import ProductView from "components/ProductView";
 import CheckoutView from "components/CheckoutView";
+import DashboardLayoutView from "components/DashboardLayoutView";
+import ShopDashboardListView from "components/ShopDashboardListView";
 
 import "./index.css";
 import { Products } from "./ProductsData";
@@ -24,12 +26,14 @@ const App = () => {
 
   const handleCheckoutProducts = (data: any) => setCheckoutProducts(data)
 
-  return <div className="py-10 text-3xl mx-auto max-w-6xl flex flex-col gap-5">
+  return <div>
     <BrowserRouter>
       <Routes>
         <Route path="/shop" element={<ProductsView products={Products} handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
         <Route path="/shop/:slug" element={<ProductViewComponent handleCheckout={handleCheckoutProducts} checkoutProducts={checkoutProducts} />} />
         <Route path="/shop/checkout" element={<CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts} />} />
+        <Route path="/dashboard" element={<DashboardLayoutView><div>empty</div></DashboardLayoutView>} />
+        <Route path="/dashboard/shop" element={<DashboardLayoutView><ShopDashboardListView/></DashboardLayoutView>} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>

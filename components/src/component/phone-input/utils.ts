@@ -23,7 +23,7 @@ export function getCountry(countryCode: any) {
   return option;
 }
 
-export function applyFilter({ inputData, query }: { inputData: any, query: any }) {
+export function applyFilter({ inputData, query }:any) {
   if (query) {
     return inputData.filter(
       (country: any) =>
