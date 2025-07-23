@@ -8,21 +8,26 @@ import NewestBooking from "./post/newest-booking";
 import MainTable from "./table/table";
 import Upload from "./upload/upload";
 import CheckoutView from "./modules/shop/checkout/CheckoutView";
+// import DashboardLayout from "./modules/dashboard/layout";
 import { Checkout } from "./modules/shop/checkout/CheckoutData";
 import { useState } from "react";
+import { DashboardLayout } from "./modules/dashboard/dashboard/layout";
+import { ThemeProvider } from "./theme/theme-provider";
 
 const App = () => {
   const [checkoutProducts, setCheckoutProducts] = useState(Checkout)
 
   const handleCheckoutProducts = (data: any) => setCheckoutProducts(data)
 
-  return <div className="text-xs mx-auto max-w-6xl flex flex-col gap-5 py-10">
-    <div>Name: components</div>
-    <div>Framework: react-19</div>
-    {/* <ProductsView products={Products} /> */}
-    {/* <ProductView product={Products[1]}/> */}
-    <CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts}/>
-    {/* <div className="grid grid-cols-4 gap-5">
+  return <ThemeProvider>
+    {/* <div className="text-xs mx-auto max-w-6xl flex flex-col gap-5 py-10"> */}
+      {/* <div>Name: components</div>
+    <div>Framework: react-19</div> */}
+      {/* <ProductsView products={Products} /> */}
+      {/* <ProductView product={Products[1]}/> */}
+      {/* <CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts}/> */}
+      <DashboardLayout><div>hi</div></DashboardLayout>
+      {/* <div className="grid grid-cols-4 gap-5">
       <NewestBooking item={{
         guests: '3-5',
         id: 1,
@@ -35,12 +40,13 @@ const App = () => {
         coverUrl: '',
       }} />
     </div> */}
-    {/* <div className="grid grid-cols-2 gap-5">
+      {/* <div className="grid grid-cols-2 gap-5">
       <Upload />
       <Upload multiple={true} />
     </div> */}
-    {/* <MainTable /> */}
-  </div>
+      {/* <MainTable /> */}
+    {/* </div> */}
+  </ThemeProvider>
 };
 
 const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);

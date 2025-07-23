@@ -8,7 +8,7 @@ import NoSsr from '@mui/material/NoSsr';
 
 // ----------------------------------------------------------------------
 
-const iconifyClasses = {
+export const iconifyClasses = {
   root: 'mnl__icon__root',
 };
 

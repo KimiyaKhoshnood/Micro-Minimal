@@ -20,7 +20,6 @@ export const Scrollbar = forwardRef(
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
-        '& .simplebar-placeholder': { height: "0 !important" },
         '& .simplebar-wrapper': slotProps?.wrapper,
         '& .simplebar-content-wrapper': slotProps?.contentWrapper,
         '& .simplebar-content': {
