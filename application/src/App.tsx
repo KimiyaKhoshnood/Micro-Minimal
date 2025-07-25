@@ -10,12 +10,16 @@ import ShopDashboardListView from "components/ShopDashboardListView";
 import ShopDashboardDetailsView from "components/ShopDashboardDetailsView";
 import ShopDashboardCreateView from "components/ShopDashboardCreateView";
 import ShopDashboardEditView from "components/ShopDashboardEditView";
-
+import OrderDashboardListView from "components/OrderDashboardListView";
+import OrderDashboardDetailsView from "components/OrderDashboardDetailsView";
+ 
+ 
 import "./index.css";
 import { Products } from "./ProductsData";
 import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import { Checkout } from "./CheckoutData";
 import { useEffect, useState } from "react";
+import { OrderDate } from "./order-data";
 
 const App = () => {
   const [checkoutProducts, setCheckoutProducts] = useState(() => {
@@ -40,6 +44,8 @@ const App = () => {
         <Route path="/dashboard/shop/:id" element={<DashboardLayoutView><ShopDashboardDetailsView product={Products[0]} handleCheckout={handleCheckoutProducts} /></DashboardLayoutView>} />
         <Route path="/dashboard/shop/create" element={<DashboardLayoutView><ShopDashboardCreateView/></DashboardLayoutView>} />
         <Route path="/dashboard/shop/edit/:id" element={<DashboardLayoutView><ShopDashboardEditView/></DashboardLayoutView>} />
+        <Route path="/dashboard/order" element={<DashboardLayoutView><OrderDashboardListView/></DashboardLayoutView>} />
+        <Route path="/dashboard/order/:id" element={<DashboardLayoutView><OrderDashboardDetailsView order={OrderDate} handleCheckout={handleCheckoutProducts} /></DashboardLayoutView>} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>

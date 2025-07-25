@@ -13,6 +13,8 @@ export const mfConfig = {
     "./ShopDashboardDetailsView": "./src/modules/shop-dashboard/shop-dashboard-details/shop-dashboard-details-view.tsx",
     "./ShopDashboardCreateView": "./src/modules/shop-dashboard/shop-dashboard-create/shop-dashboard-create-view.tsx",
     "./ShopDashboardEditView": "./src/modules/shop-dashboard/shop-dashboard-edit/shop-dashboard-edit-view.tsx",
+    "./OrderDashboardListView": "./src/modules/order-dashboard/order-dashboard-list/order-dashboard-list-view.tsx",
+    "./OrderDashboardDetailsView": "./src/modules/order-dashboard/order-dashboard-details/order-dashboard-details-view.tsx",
   },
   shared: ["react", "react-dom"],
 };
