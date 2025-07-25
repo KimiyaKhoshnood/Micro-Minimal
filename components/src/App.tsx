@@ -16,6 +16,7 @@ import { ThemeProvider } from "./theme/theme-provider";
 import DashboardLayoutView from "./modules/dashboard/dashboardLayoutView/dashboardLayoutView";
 import ShopDashboardDetailsView from "./modules/shop-dashboard/shop-dashboard-details/shop-dashboard-details-view";
 import ShopDashboardListView from "./modules/shop-dashboard/shop-dashboard-list/shop-dashboard-list-view";
+import ShopDashboardCreateView from "./modules/shop-dashboard/shop-dashboard-create/shop-dashboard-create-view";
 
 const App = () => {
   const [checkoutProducts, setCheckoutProducts] = useState(Checkout)
@@ -29,7 +30,8 @@ const App = () => {
       {/* <ProductsView products={Products} /> */}
       {/* <ProductView product={Products[1]}/> */}
       {/* <CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts}/> */}
-      <DashboardLayoutView><ShopDashboardListView/></DashboardLayoutView>
+      {/* <DashboardLayoutView><ShopDashboardListView/></DashboardLayoutView> */}
+      <DashboardLayoutView><ShopDashboardCreateView /></DashboardLayoutView>
       {/* <div className="grid grid-cols-4 gap-5">
       <NewestBooking item={{
         guests: '3-5',

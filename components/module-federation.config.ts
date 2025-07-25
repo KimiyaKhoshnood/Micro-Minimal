@@ -10,6 +10,9 @@ export const mfConfig = {
     "./CheckoutView": "./src/modules/shop/checkout/CheckoutView.tsx",
     "./DashboardLayoutView": "./src/modules/dashboard/dashboardLayoutView/DashboardLayoutView.tsx",
     "./ShopDashboardListView": "./src/modules/shop-dashboard/shop-dashboard-list/shop-dashboard-list-view.tsx",
+    "./ShopDashboardDetailsView": "./src/modules/shop-dashboard/shop-dashboard-details/shop-dashboard-details-view.tsx",
+    "./ShopDashboardCreateView": "./src/modules/shop-dashboard/shop-dashboard-create/shop-dashboard-create-view.tsx",
+    "./ShopDashboardEditView": "./src/modules/shop-dashboard/shop-dashboard-edit/shop-dashboard-edit-view.tsx",
   },
   shared: ["react", "react-dom"],
 };

@@ -7,6 +7,9 @@ import ProductView from "components/ProductView";
 import CheckoutView from "components/CheckoutView";
 import DashboardLayoutView from "components/DashboardLayoutView";
 import ShopDashboardListView from "components/ShopDashboardListView";
+import ShopDashboardDetailsView from "components/ShopDashboardDetailsView";
+import ShopDashboardCreateView from "components/ShopDashboardCreateView";
+import ShopDashboardEditView from "components/ShopDashboardEditView";
 
 import "./index.css";
 import { Products } from "./ProductsData";
@@ -34,6 +37,9 @@ const App = () => {
         <Route path="/shop/checkout" element={<CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts} />} />
         <Route path="/dashboard" element={<DashboardLayoutView><div>empty</div></DashboardLayoutView>} />
         <Route path="/dashboard/shop" element={<DashboardLayoutView><ShopDashboardListView/></DashboardLayoutView>} />
+        <Route path="/dashboard/shop/:id" element={<DashboardLayoutView><ShopDashboardDetailsView product={Products[0]} handleCheckout={handleCheckoutProducts} /></DashboardLayoutView>} />
+        <Route path="/dashboard/shop/create" element={<DashboardLayoutView><ShopDashboardCreateView/></DashboardLayoutView>} />
+        <Route path="/dashboard/shop/edit/:id" element={<DashboardLayoutView><ShopDashboardEditView/></DashboardLayoutView>} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>

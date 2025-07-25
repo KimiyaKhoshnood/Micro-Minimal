@@ -55,7 +55,7 @@ function ProductOverview({ product, handleCheckout }: { product: { [key: string]
     )
 }
 
-function ProductDetailsCarousel({ images }: { images: any[] }) {
+export function ProductDetailsCarousel({ images }: { images: any[] }) {
     const carousel = useCarousel({
         thumbs: {
             slidesToShow: 'auto',
@@ -127,7 +127,7 @@ function ProductDetailsCarousel({ images }: { images: any[] }) {
     );
 }
 
-function ProductDetailsSummary({
+export function ProductDetailsSummary({
     items,
     product,
     handleCheckout,
@@ -138,7 +138,7 @@ function ProductDetailsSummary({
 }: {
     items?: any,
     product?: any,
-    handleCheckout: (data: any) => void,
+    handleCheckout?: (data: any) => void,
     onAddCart?: any,
     onGotoStep?: any,
     disableActions?: any,
@@ -206,7 +206,7 @@ function ProductDetailsSummary({
     });
 
     const handleAddCart = useCallback(() => {
-        handleCheckout((checkout: any) => {
+        handleCheckout && handleCheckout((checkout: any) => {
             const existingItemIndex = checkout.items.findIndex((item: any) => item.name === values.name);
 
             if (existingItemIndex !== -1) {

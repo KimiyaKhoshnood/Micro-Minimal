@@ -49,7 +49,7 @@ function ProductDetails({ product }: { product: any }) {
     )
 }
 
-function ProductDetailsDescription({ description }: { description: any }) {
+export function ProductDetailsDescription({ description }: { description: any }) {
     return (
         <Stack padding={3}>
             <Markdown

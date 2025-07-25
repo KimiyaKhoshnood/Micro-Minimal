@@ -9,7 +9,7 @@ import { RHFAutocomplete } from './rhf-autocomplete';
 import { RHFSwitch, RHFMultiSwitch } from './rhf-switch';
 import { RHFSelect, RHFMultiSelect } from './rhf-select';
 import { RHFUpload, RHFUploadBox, RHFUploadAvatar } from './rhf-upload';
-import { RHFCheckbox } from './rhf-checkbox';
+import { RHFCheckbox, RHFMultiCheckbox } from './rhf-checkbox';
 import { RHFCountrySelect } from './rhf-country-select';
 // import { RHFDatePicker, RHFMobileDateTimePicker } from './rhf-date-picker';
 
@@ -33,7 +33,7 @@ export const Field = {
   MultiSwitch: RHFMultiSwitch,
   UploadAvatar: RHFUploadAvatar,
   Autocomplete: RHFAutocomplete,
-  // MultiCheckbox: RHFMultiCheckbox,
+  MultiCheckbox: RHFMultiCheckbox,
   CountrySelect: RHFCountrySelect,
   // MobileDateTimePicker: RHFMobileDateTimePicker,
 };
