@@ -82,7 +82,26 @@ function DashboardLayout({ sx, children, data }: { sx?: any, children?: any, dat
               // langs: allLangs,
               // account: _account,
               // contacts: _contacts,
-              // workspaces: _workspaces,
+              workspaces: [
+                {
+                  "id": "team-1",
+                  "name": "Team 1",
+                  "logo": "/assets/icons/workspaces/logo-1.webp",
+                  "plan": "Free"
+                },
+                {
+                  "id": "team-2",
+                  "name": "Team 2",
+                  "logo": "/assets/icons/workspaces/logo-2.webp",
+                  "plan": "Pro"
+                },
+                {
+                  "id": "team-3",
+                  "name": "Team 3",
+                  "logo": "/assets/icons/workspaces/logo-3.webp",
+                  "plan": "Pro"
+                }
+              ],
               // notifications: _notifications,
             }}
             slotsDisplay={{
@@ -292,41 +311,41 @@ function useNavColorVars(theme?: any, settings?: any) {
 }
 
 export function DashboardContent({ sx, children, disablePadding, maxWidth = 'lg', ...other }: { sx?: any, children?: any, disablePadding?: any, maxWidth?: false | Breakpoint | undefined, [other: string]: any }) {
-    const theme = useTheme();
+  const theme = useTheme();
 
-    const settings = {
-        compactLayout: true
-    }
+  const settings = {
+    compactLayout: true
+  }
 
-    const layoutQuery = 'lg';
+  const layoutQuery = 'lg';
 
-    return (
-        <Container
-            className={layoutClasses.content}
-            maxWidth={settings.compactLayout ? maxWidth : false}
-            sx={{
-                display: 'flex',
-                flex: '1 1 auto',
-                flexDirection: 'column',
-                pt: 'var(--layout-dashboard-content-pt)',
-                pb: 'var(--layout-dashboard-content-pb)',
-                [theme.breakpoints.up(layoutQuery)]: {
-                    px: 'var(--layout-dashboard-content-px)',
-                },
-                ...(disablePadding && {
-                    p: {
-                        xs: 0,
-                        sm: 0,
-                        md: 0,
-                        lg: 0,
-                        xl: 0,
-                    },
-                }),
-                ...sx,
-            }}
-            {...other}
-        >
-            {children}
-        </Container>
-    );
+  return (
+    <Container
+      className={layoutClasses.content}
+      maxWidth={settings.compactLayout ? maxWidth : false}
+      sx={{
+        display: 'flex',
+        flex: '1 1 auto',
+        flexDirection: 'column',
+        pt: 'var(--layout-dashboard-content-pt)',
+        pb: 'var(--layout-dashboard-content-pb)',
+        [theme.breakpoints.up(layoutQuery)]: {
+          px: 'var(--layout-dashboard-content-px)',
+        },
+        ...(disablePadding && {
+          p: {
+            xs: 0,
+            sm: 0,
+            md: 0,
+            lg: 0,
+            xl: 0,
+          },
+        }),
+        ...sx,
+      }}
+      {...other}
+    >
+      {children}
+    </Container>
+  );
 }

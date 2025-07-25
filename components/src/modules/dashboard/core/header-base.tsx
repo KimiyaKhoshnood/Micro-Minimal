@@ -10,6 +10,7 @@ import { styled, useTheme } from '@mui/material/styles';
 
 import { HeaderSection } from './header-section';
 import { IconButton, SvgIcon } from '@mui/material';
+import { WorkspacesPopover } from './workspaces-popover';
 // import { Searchbar } from '../components/searchbar';
 // import { MenuButton } from '../components/menu-button';
 // import { SignInButton } from '../components/sign-in-button';
@@ -109,13 +110,13 @@ export function HeaderBase({
             )}
 
             {/* -- Logo -- */}
-            {/* <Logo data-slot="logo" /> */} logo
+            {/* <Logo data-slot="logo" /> */}
 
             {/* -- Divider -- */}
             <StyledDivider data-slot="divider" />
 
             {/* -- Workspace popover -- */}
-            {/* {workspaces && <WorkspacesPopover data-slot="workspaces" data={data?.workspaces} />} */}
+            {workspaces && <WorkspacesPopover data-slot="workspaces" data={data?.workspaces} />}
 
             {slots?.leftAreaEnd}
           </>
