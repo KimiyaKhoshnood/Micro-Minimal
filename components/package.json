@@ -34,6 +34,7 @@
     "@mui/lab": "^7.0.0-beta.14",
     "@mui/material": "^7.2.0",
     "@mui/x-data-grid": "^8.9.1",
+    "@mui/x-date-pickers": "^8.9.0",
     "@tiptap/extension-image": "^3.0.7",
     "@tiptap/extension-link": "^3.0.7",
     "@tiptap/extension-placeholder": "^3.0.7",

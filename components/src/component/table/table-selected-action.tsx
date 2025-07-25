@@ -38,7 +38,7 @@ export function TableSelectedAction({
         zIndex: 9,
         height: 58,
         position: 'absolute',
-        bgcolor: 'blue',
+        bgcolor: 'primary.lighter',
         ...(dense && { height: 38 }),
         ...sx,
       }}

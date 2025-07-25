@@ -17,6 +17,7 @@ import DashboardLayoutView from "./modules/dashboard/dashboardLayoutView/dashboa
 import ShopDashboardDetailsView from "./modules/shop-dashboard/shop-dashboard-details/shop-dashboard-details-view";
 import ShopDashboardListView from "./modules/shop-dashboard/shop-dashboard-list/shop-dashboard-list-view";
 import ShopDashboardCreateView from "./modules/shop-dashboard/shop-dashboard-create/shop-dashboard-create-view";
+import OrderDashboardListView from "./modules/order-dashboard/order-dashboard-list/order-dashboard-list-view";
 
 const App = () => {
   const [checkoutProducts, setCheckoutProducts] = useState(Checkout)
@@ -31,7 +32,7 @@ const App = () => {
       {/* <ProductView product={Products[1]}/> */}
       {/* <CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts}/> */}
       {/* <DashboardLayoutView><ShopDashboardListView/></DashboardLayoutView> */}
-      <DashboardLayoutView><ShopDashboardCreateView /></DashboardLayoutView>
+      <DashboardLayoutView><OrderDashboardListView /></DashboardLayoutView>
       {/* <div className="grid grid-cols-4 gap-5">
       <NewestBooking item={{
         guests: '3-5',
