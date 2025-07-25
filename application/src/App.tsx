@@ -13,7 +13,7 @@ import ShopDashboardEditView from "components/ShopDashboardEditView";
 import OrderDashboardListView from "components/OrderDashboardListView";
 import OrderDashboardDetailsView from "components/OrderDashboardDetailsView";
 import CalendarDashboardView from "components/CalendarDashboardView";
- 
+import AnalyticsDashboardView from "components/AnalyticsDashboardView";
 import "./index.css";
 import { Products } from "./ProductsData";
 import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
@@ -47,6 +47,7 @@ const App = () => {
         <Route path="/dashboard/order" element={<DashboardLayoutView><OrderDashboardListView/></DashboardLayoutView>} />
         <Route path="/dashboard/order/:id" element={<DashboardLayoutView><OrderDashboardDetailsView order={OrderDate} handleCheckout={handleCheckoutProducts} /></DashboardLayoutView>} />
         <Route path="/dashboard/calendar" element={<DashboardLayoutView><CalendarDashboardView order={OrderDate} handleCheckout={handleCheckoutProducts} /></DashboardLayoutView>} />
+        <Route path="/dashboard/analytics" element={<DashboardLayoutView><AnalyticsDashboardView /></DashboardLayoutView>} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>

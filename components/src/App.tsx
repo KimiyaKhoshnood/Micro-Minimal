@@ -21,6 +21,7 @@ import OrderDashboardListView from "./modules/order-dashboard/order-dashboard-li
 import OrderDashboardDetailsView from "./modules/order-dashboard/order-dashboard-details/order-dashboard-details-view";
 import { OrderDate } from "./modules/order-dashboard/order-dashboard-details/order-data";
 import CalendarDashboardView from "./modules/calendar-dashboard/calendar-dashboard-view";
+import AnalyticsDashboardView from "./modules/analytics-dashboard/analytics-dashboard-view";
 
 const App = () => {
   const [checkoutProducts, setCheckoutProducts] = useState(Checkout)
@@ -35,7 +36,7 @@ const App = () => {
       {/* <ProductView product={Products[1]}/> */}
       {/* <CheckoutView checkout={checkoutProducts} handleCheckout={handleCheckoutProducts}/> */}
       {/* <DashboardLayoutView><ShopDashboardListView/></DashboardLayoutView> */}
-      <DashboardLayoutView><CalendarDashboardView /></DashboardLayoutView>
+      <DashboardLayoutView><AnalyticsDashboardView /></DashboardLayoutView>
       {/* <div className="grid grid-cols-4 gap-5">
       <NewestBooking item={{
         guests: '3-5',

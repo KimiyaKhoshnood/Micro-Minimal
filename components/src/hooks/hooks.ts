@@ -1,6 +1,9 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import dayjs from "dayjs";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 export function useDebounce(value: string, delay = 500) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -246,3 +249,52 @@ export function useResponsive(query?: any, start?: any, end?: any) {
 
   return mediaQueryResult;
 }
+
+// ----------------------------------------------------------------------
+
+export function fNumber(inputValue?: any, options?: any) {
+  const locale = { code: 'en-US', currency: 'USD' };
+
+  const number = processInput(inputValue);
+  if (number === null) return '';
+
+  const fm = new Intl.NumberFormat(locale.code, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+    ...options,
+  }).format(number);
+
+  return fm;
+}
+
+export function fPercent(inputValue?: any, options?: any) {
+  const locale = { code: 'en-US', currency: 'USD' };
+
+  const number = processInput(inputValue);
+  if (number === null) return '';
+
+  const fm = new Intl.NumberFormat(locale.code, {
+    style: 'percent',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1,
+    ...options,
+  }).format(number / 100);
+
+  return fm;
+}
+
+// ----------------------------------------------------------------------
+
+/** output: a few seconds, 2 years
+ */
+export function fToNow(date: any) {
+  if (!date) {
+    return null;
+  }
+
+  const isValid = dayjs(date).isValid();
+
+  return isValid ? dayjs(date).toNow(true) : 'Invalid time value';
+}
+
+// ----------------------------------------------------------------------
