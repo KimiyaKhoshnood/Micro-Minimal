@@ -1,5 +1,4 @@
 import { Avatar, Box, Button, Card, CardHeader, Divider, Grid, IconButton, Link, ListItemText, MenuItem, MenuList, Paper, Stack, Typography } from "@mui/material"
-import { DashboardContent } from "../../shop-dashboard/shop-dashboard-list/shop-dashboard-list-view"
 import { Iconify } from "../../../component/iconify/iconify";
 import { Label } from "../../../component/label/label";
 import { fDateTime } from "../../../post/newest-booking";
@@ -14,6 +13,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import { DashboardContent } from "../../dashboard/dashboard/layout";
 
 // ----------------------------------------------------------------------
 

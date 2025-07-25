@@ -11,6 +11,7 @@ import { RHFSelect, RHFMultiSelect } from './rhf-select';
 import { RHFUpload, RHFUploadBox, RHFUploadAvatar } from './rhf-upload';
 import { RHFCheckbox, RHFMultiCheckbox } from './rhf-checkbox';
 import { RHFCountrySelect } from './rhf-country-select';
+import { RHFDatePicker, RHFMobileDateTimePicker } from './rhf-date-picker';
 // import { RHFDatePicker, RHFMobileDateTimePicker } from './rhf-date-picker';
 
 // ----------------------------------------------------------------------
@@ -28,12 +29,12 @@ export const Field = {
   Checkbox: RHFCheckbox,
   UploadBox: RHFUploadBox,
   RadioGroup: RHFRadioGroup,
-  // DatePicker: RHFDatePicker,
+  DatePicker: RHFDatePicker,
   MultiSelect: RHFMultiSelect,
   MultiSwitch: RHFMultiSwitch,
   UploadAvatar: RHFUploadAvatar,
   Autocomplete: RHFAutocomplete,
   MultiCheckbox: RHFMultiCheckbox,
   CountrySelect: RHFCountrySelect,
-  // MobileDateTimePicker: RHFMobileDateTimePicker,
+  MobileDateTimePicker: RHFMobileDateTimePicker,
 };

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTabs } from "../../../hooks/hooks";
-import { DashboardContent } from "../shop-dashboard-list/shop-dashboard-list-view";
 import { Box, Button, Card, Grid, IconButton, Link, MenuItem, MenuList, Stack, Tab, Tabs, Tooltip, Typography } from "@mui/material";
 import { Iconify } from "../../../component/iconify/iconify";
 import { varAlpha } from "../../../theme/styles/utils";
@@ -9,6 +8,7 @@ import { ProductDetailsCarousel, ProductDetailsSummary } from "../../shop/produc
 import { usePopover } from "../../../component/custom-popover/use-popover";
 import { CustomPopover } from "../../../component/custom-popover/custom-popover";
 import LoadingButton from '@mui/lab/LoadingButton';
+import { DashboardContent } from "../../dashboard/dashboard/layout";
 
 // ----------------------------------------------------------------------
 

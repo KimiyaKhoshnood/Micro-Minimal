@@ -4,7 +4,7 @@ import "../../../index.css";
 import { useMemo } from 'react';
 
 import Alert from '@mui/material/Alert';
-import { useTheme } from '@mui/material/styles';
+import { Breakpoint, useTheme } from '@mui/material/styles';
 import { iconButtonClasses } from '@mui/material/IconButton';
 
 // import { useBoolean } from 'src/hooks/use-boolean';
@@ -26,7 +26,7 @@ import { _workspaces } from '../config-nav-workspace';
 import { LayoutSection } from '../core/layout-section';
 import { navData as dashboardNavData } from '../config-nav-dashboard';
 import { useBoolean } from '../../../hooks/hooks';
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -291,40 +291,42 @@ function useNavColorVars(theme?: any, settings?: any) {
   ]);
 }
 
-// export function DashboardContent({ sx, children, disablePadding, maxWidth = 'lg', ...other }: { sx?: any, children?: any, disablePadding?: any, maxWidth?: false | Breakpoint, [other: string]: any }) {
-//   const theme = useTheme();
+export function DashboardContent({ sx, children, disablePadding, maxWidth = 'lg', ...other }: { sx?: any, children?: any, disablePadding?: any, maxWidth?: false | Breakpoint | undefined, [other: string]: any }) {
+    const theme = useTheme();
 
-//   // const settings = useSettingsContext();
+    const settings = {
+        compactLayout: true
+    }
 
-//   const layoutQuery = 'lg';
+    const layoutQuery = 'lg';
 
-//   return (
-//     <Container
-//       className={layoutClasses.content}
-//       maxWidth={maxWidth}
-//       sx={{
-//         display: 'flex',
-//         flex: '1 1 auto',
-//         flexDirection: 'column',
-//         pt: 'var(--layout-dashboard-content-pt)',
-//         pb: 'var(--layout-dashboard-content-pb)',
-//         [theme.breakpoints.up(layoutQuery)]: {
-//           px: 'var(--layout-dashboard-content-px)',
-//         },
-//         ...(disablePadding && {
-//           p: {
-//             xs: 0,
-//             sm: 0,
-//             md: 0,
-//             lg: 0,
-//             xl: 0,
-//           },
-//         }),
-//         ...sx,
-//       }}
-//       {...other}
-//     >
-//       {children}
-//     </Container>
-//   );
-// }
+    return (
+        <Container
+            className={layoutClasses.content}
+            maxWidth={settings.compactLayout ? maxWidth : false}
+            sx={{
+                display: 'flex',
+                flex: '1 1 auto',
+                flexDirection: 'column',
+                pt: 'var(--layout-dashboard-content-pt)',
+                pb: 'var(--layout-dashboard-content-pb)',
+                [theme.breakpoints.up(layoutQuery)]: {
+                    px: 'var(--layout-dashboard-content-px)',
+                },
+                ...(disablePadding && {
+                    p: {
+                        xs: 0,
+                        sm: 0,
+                        md: 0,
+                        lg: 0,
+                        xl: 0,
+                    },
+                }),
+                ...sx,
+            }}
+            {...other}
+        >
+            {children}
+        </Container>
+    );
+}

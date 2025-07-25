@@ -1,7 +1,6 @@
 import { Box, Button, Card, IconButton, Tab, Table, TableBody, Tabs, Tooltip } from "@mui/material";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
-import { DashboardContent } from "../../shop-dashboard/shop-dashboard-list/shop-dashboard-list-view";
 import { CustomBreadcrumbs } from "../../../component/custom-breadcrumbs/custom-breadcrumbs";
 import { varAlpha } from "../../../theme/styles/utils";
 import { Label } from "../../../component/label/label";
@@ -22,6 +21,7 @@ import { OrderTableFiltersResult } from "./order-table-filters-result";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { ConfirmDialog } from "../../../component/custom-dialog/confirm-dialog";
+import { DashboardContent } from "../../dashboard/dashboard/layout";
 
 // ----------------------------------------------------------------------
 

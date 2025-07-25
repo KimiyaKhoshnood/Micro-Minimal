@@ -1,111 +1,112 @@
+import { useMediaQuery, useTheme } from "@mui/material";
 import dayjs from "dayjs";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 export function useDebounce(value: string, delay = 500) {
-    const [debouncedValue, setDebouncedValue] = useState(value);
+  const [debouncedValue, setDebouncedValue] = useState(value);
 
-    const debounceHandler = useCallback(() => {
-        const handler = setTimeout(() => {
-            setDebouncedValue(value);
-        }, delay);
+  const debounceHandler = useCallback(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
 
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [value, delay]);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
 
-    useEffect(() => {
-        debounceHandler();
-    }, [debounceHandler]);
+  useEffect(() => {
+    debounceHandler();
+  }, [debounceHandler]);
 
-    const memoizedValue = useMemo(() => debouncedValue, [debouncedValue]);
+  const memoizedValue = useMemo(() => debouncedValue, [debouncedValue]);
 
-    return memoizedValue;
+  return memoizedValue;
 }
 
 export function useBoolean(defaultValue: boolean = false) {
-    const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue);
 
-    const onTrue = useCallback(() => {
-        setValue(true);
-    }, []);
+  const onTrue = useCallback(() => {
+    setValue(true);
+  }, []);
 
-    const onFalse = useCallback(() => {
-        setValue(false);
-    }, []);
+  const onFalse = useCallback(() => {
+    setValue(false);
+  }, []);
 
-    const onToggle = useCallback(() => {
-        setValue((prev) => !prev);
-    }, []);
+  const onToggle = useCallback(() => {
+    setValue((prev) => !prev);
+  }, []);
 
-    const memoizedValue = useMemo(
-        () => ({
-            value,
-            onTrue,
-            onFalse,
-            onToggle,
-            setValue,
-        }),
-        [value, onTrue, onFalse, onToggle, setValue]
-    );
+  const memoizedValue = useMemo(
+    () => ({
+      value,
+      onTrue,
+      onFalse,
+      onToggle,
+      setValue,
+    }),
+    [value, onTrue, onFalse, onToggle, setValue]
+  );
 
-    return memoizedValue;
+  return memoizedValue;
 }
 
 function processInput(inputValue: any) {
-    if (inputValue == null || Number.isNaN(inputValue)) return null;
-    return Number(inputValue);
+  if (inputValue == null || Number.isNaN(inputValue)) return null;
+  return Number(inputValue);
 }
 
 export function fShortenNumber(inputValue?: any, options?: any) {
-    const locale = { code: 'en-US', currency: 'USD' };
+  const locale = { code: 'en-US', currency: 'USD' };
 
-    const number = processInput(inputValue);
-    if (number === null) return '';
+  const number = processInput(inputValue);
+  if (number === null) return '';
 
-    const fm = new Intl.NumberFormat(locale.code, {
-        notation: 'compact',
-        maximumFractionDigits: 2,
-        ...options,
-    }).format(number);
+  const fm = new Intl.NumberFormat(locale.code, {
+    notation: 'compact',
+    maximumFractionDigits: 2,
+    ...options,
+  }).format(number);
 
-    return fm.replace(/[A-Z]/g, (match) => match.toLowerCase());
+  return fm.replace(/[A-Z]/g, (match) => match.toLowerCase());
 }
 
 export function useTabs(defaultValue: any) {
-    const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue);
 
-    const onChange = useCallback((event: any, newValue: any) => {
-        setValue(newValue);
-    }, []);
+  const onChange = useCallback((event: any, newValue: any) => {
+    setValue(newValue);
+  }, []);
 
-    const memoizedValue = useMemo(() => ({ value, setValue, onChange }), [onChange, value]);
+  const memoizedValue = useMemo(() => ({ value, setValue, onChange }), [onChange, value]);
 
-    return memoizedValue;
+  return memoizedValue;
 }
 
 export const formatStr = {
-    dateTime: 'DD MMM YYYY h:mm a', // 17 Apr 2022 12:00 am
-    date: 'DD MMM YYYY', // 17 Apr 2022
-    time: 'h:mm a', // 12:00 am
-    split: {
-        dateTime: 'DD/MM/YYYY h:mm a', // 17/04/2022 12:00 am
-        date: 'DD/MM/YYYY', // 17/04/2022
-    },
-    paramCase: {
-        dateTime: 'DD-MM-YYYY h:mm a', // 17-04-2022 12:00 am
-        date: 'DD-MM-YYYY', // 17-04-2022
-    },
+  dateTime: 'DD MMM YYYY h:mm a', // 17 Apr 2022 12:00 am
+  date: 'DD MMM YYYY', // 17 Apr 2022
+  time: 'h:mm a', // 12:00 am
+  split: {
+    dateTime: 'DD/MM/YYYY h:mm a', // 17/04/2022 12:00 am
+    date: 'DD/MM/YYYY', // 17/04/2022
+  },
+  paramCase: {
+    dateTime: 'DD-MM-YYYY h:mm a', // 17-04-2022 12:00 am
+    date: 'DD-MM-YYYY', // 17-04-2022
+  },
 };
 
 export function fDate(date: Date, format?: any) {
-    if (!date) {
-        return null;
-    }
+  if (!date) {
+    return null;
+  }
 
-    const isValid = dayjs(date).isValid();
+  const isValid = dayjs(date).isValid();
 
-    return isValid ? dayjs(date).format(format ?? formatStr.date) : 'Invalid time value';
+  return isValid ? dayjs(date).format(format ?? formatStr.date) : 'Invalid time value';
 }
 
 // ----------------------------------------------------------------------
@@ -113,13 +114,13 @@ export function fDate(date: Date, format?: any) {
 /** output: 12:00 am
  */
 export function fTime(date?: any, format?: any) {
-    if (!date) {
-        return null;
-    }
+  if (!date) {
+    return null;
+  }
 
-    const isValid = dayjs(date).isValid();
+  const isValid = dayjs(date).isValid();
 
-    return isValid ? dayjs(date).format(format ?? formatStr.time) : 'Invalid time value';
+  return isValid ? dayjs(date).format(format ?? formatStr.time) : 'Invalid time value';
 }
 
 // ----------------------------------------------------------------------
@@ -127,14 +128,14 @@ export function fTime(date?: any, format?: any) {
 /** output: boolean
  */
 export function fIsAfter(startDate: any, endDate: any): boolean {
-    return dayjs(startDate).isAfter(endDate);
+  return dayjs(startDate).isAfter(endDate);
 }
 
 // ----------------------------------------------------------------------
 
 /** output: boolean
  */
-export function fIsSame(startDate?:any, endDate?:any, units?:any) {
+export function fIsSame(startDate?: any, endDate?: any, units?: any) {
   if (!startDate || !endDate) {
     return false;
   }
@@ -156,7 +157,7 @@ export function fIsSame(startDate?:any, endDate?:any, units?:any) {
  * Same month: 25 - 26 Apr 2024
  * Same year: 25 Apr - 26 May 2024
  */
-export function fDateRangeShortLabel(startDate?:any, endDate?:any, initial?:any) {
+export function fDateRangeShortLabel(startDate?: any, endDate?: any, initial?: any) {
   const isValid = dayjs(startDate).isValid() && dayjs(endDate).isValid();
 
   const isAfter = fIsAfter(startDate, endDate);
@@ -191,7 +192,7 @@ export function fDateRangeShortLabel(startDate?:any, endDate?:any, initial?:any)
 
 /** output: boolean
  */
-export function fIsBetween(inputDate?:any, startDate?:any, endDate?:any) {
+export function fIsBetween(inputDate?: any, startDate?: any, endDate?: any) {
   if (!inputDate || !startDate || !endDate) {
     return false;
   }
@@ -211,7 +212,7 @@ export function fIsBetween(inputDate?:any, startDate?:any, endDate?:any) {
 
 /** output: 1713250100
  */
-export function fTimestamp(date:any) {
+export function fTimestamp(date: any) {
   if (!date) {
     return null;
   }
@@ -219,4 +220,29 @@ export function fTimestamp(date:any) {
   const isValid = dayjs(date).isValid();
 
   return isValid ? dayjs(date).valueOf() : 'Invalid time value';
+}
+
+// ----------------------------------------------------------------------
+
+export function useResponsive(query?: any, start?: any, end?: any) {
+  const theme = useTheme();
+
+  const getQuery = useMemo(() => {
+    switch (query) {
+      case 'up':
+        return theme.breakpoints.up(start);
+      case 'down':
+        return theme.breakpoints.down(start);
+      case 'between':
+        return theme.breakpoints.between(start, end);
+      case 'only':
+        return theme.breakpoints.only(start);
+      default:
+        return theme.breakpoints.up('xs');
+    }
+  }, [theme, query, start, end]);
+
+  const mediaQueryResult = useMediaQuery(getQuery);
+
+  return mediaQueryResult;
 }

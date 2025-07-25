@@ -1,6 +1,6 @@
 import { CustomBreadcrumbs } from "../../../component/custom-breadcrumbs/custom-breadcrumbs"
+import { DashboardContent } from "../../dashboard/dashboard/layout"
 import { ProductNewEditForm } from "../product-new-edit-form"
-import { DashboardContent } from "../shop-dashboard-list/shop-dashboard-list-view"
 
 const ShopDashboardCreateView = () => {
     return (

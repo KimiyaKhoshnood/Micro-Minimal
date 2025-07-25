@@ -13,6 +13,7 @@ import { Products } from '../../shop/products/ProductsData';
 import { fCurrency } from "../../shop/products/ProductUtils";
 import { ProductTableFiltersResult } from './product-table-filters-result';
 import { ProductTableToolbar } from './product-table-toolbar';
+import { DashboardContent } from "../../dashboard/dashboard/layout";
 
 // ----------------------------------------------------------------------
 
@@ -399,46 +400,6 @@ function CustomToolbar({
                 />
             )}
         </>
-    );
-}
-
-export function DashboardContent({ sx, children, disablePadding, maxWidth = 'lg', ...other }: { sx?: any, children?: any, disablePadding?: any, maxWidth?: false | Breakpoint | undefined, [other: string]: any }) {
-    const theme = useTheme();
-
-    const settings = {
-        compactLayout: true
-    }
-
-    const layoutQuery = 'lg';
-
-    return (
-        <Container
-            className={layoutClasses.content}
-            maxWidth={settings.compactLayout ? maxWidth : false}
-            sx={{
-                display: 'flex',
-                flex: '1 1 auto',
-                flexDirection: 'column',
-                pt: 'var(--layout-dashboard-content-pt)',
-                pb: 'var(--layout-dashboard-content-pb)',
-                [theme.breakpoints.up(layoutQuery)]: {
-                    px: 'var(--layout-dashboard-content-px)',
-                },
-                ...(disablePadding && {
-                    p: {
-                        xs: 0,
-                        sm: 0,
-                        md: 0,
-                        lg: 0,
-                        xl: 0,
-                    },
-                }),
-                ...sx,
-            }}
-            {...other}
-        >
-            {children}
-        </Container>
     );
 }
 
