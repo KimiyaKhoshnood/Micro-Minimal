@@ -1,14 +1,15 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import { varAlpha } from '../../theme/styles/utils';
 
-import { varAlpha } from 'src/theme/styles';
+// import { varAlpha } from 'src/theme/styles';
 
-import { Logo } from '../logo';
+// import { Logo } from '../logo';
 
 // ----------------------------------------------------------------------
 
-export function AnimateLogo1({ logo, sx, ...other }) {
+export function AnimateLogo1({ logo, sx, ...other }: { logo?: any, sx?: any, [other: string]: any }) {
   return (
     <Box
       sx={{
@@ -33,7 +34,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
         }}
         sx={{ display: 'inline-flex' }}
       >
-        {logo ?? <Logo disableLink width={64} height={64} />}
+        {/* {logo ?? <Logo disableLink width={64} height={64} />} */} logo
       </Box>
 
       <Box
@@ -49,7 +50,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
           position: 'absolute',
           width: 'calc(100% - 20px)',
           height: 'calc(100% - 20px)',
-          border: (theme) => `solid 3px ${varAlpha(theme.vars.palette.primary.darkChannel, 0.24)}`,
+          border: (theme: any) => `solid 3px ${varAlpha(theme.vars.palette.primary.darkChannel, 0.24)}`,
         }}
       />
 
@@ -66,7 +67,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
           width: 1,
           height: 1,
           position: 'absolute',
-          border: (theme) => `solid 8px ${varAlpha(theme.vars.palette.primary.darkChannel, 0.24)}`,
+          border: (theme: any) => `solid 8px ${varAlpha(theme.vars.palette.primary.darkChannel, 0.24)}`,
         }}
       />
     </Box>
@@ -75,7 +76,7 @@ export function AnimateLogo1({ logo, sx, ...other }) {
 
 // ----------------------------------------------------------------------
 
-export function AnimateLogo2({ logo, sx, ...other }) {
+export function AnimateLogo2({ logo, sx, ...other }: { logo?: any, sx?: any, [other: string]: any }) {
   return (
     <Box
       alignItems="center"
@@ -91,7 +92,7 @@ export function AnimateLogo2({ logo, sx, ...other }) {
       }}
       {...other}
     >
-      {logo ?? <Logo sx={{ zIndex: 9 }} />}
+      {/* {logo ?? <Logo sx={{ zIndex: 9 }} />} */} logo
 
       <Box
         component={m.div}
@@ -108,7 +109,7 @@ export function AnimateLogo2({ logo, sx, ...other }) {
               easing: theme.transitions.easing.easeInOut,
               duration: theme.transitions.duration.shorter,
             }),
-          background: (theme) =>
+          background: (theme: any) =>
             `linear-gradient(135deg, ${varAlpha(theme.vars.palette.primary.mainChannel, 0)} 50%, ${theme.vars.palette.primary.main} 100%)`,
         }}
       />

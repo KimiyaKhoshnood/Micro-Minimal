@@ -15,6 +15,8 @@ import OrderDashboardDetailsView from "components/OrderDashboardDetailsView";
 import CalendarDashboardView from "components/CalendarDashboardView";
 import AnalyticsDashboardView from "components/AnalyticsDashboardView";
 import BankingDashboardView from "components/BankingDashboardView";
+import MailDashboardView from "components/MailDashboardView";
+
 import "./index.css";
 import { Products } from "./ProductsData";
 import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
@@ -50,6 +52,7 @@ const App = () => {
         <Route path="/dashboard/calendar" element={<DashboardLayoutView><CalendarDashboardView order={OrderDate} handleCheckout={handleCheckoutProducts} /></DashboardLayoutView>} />
         <Route path="/dashboard/analytics" element={<DashboardLayoutView><AnalyticsDashboardView /></DashboardLayoutView>} />
         <Route path="/dashboard/banking" element={<DashboardLayoutView><BankingDashboardView /></DashboardLayoutView>} />
+        <Route path="/dashboard/mail" element={<DashboardLayoutView><MailDashboardView /></DashboardLayoutView>} />
         <Route path="/" element={<>
           {/* <ProductsView products={Products} /> */}
           <div>Name: application</div>

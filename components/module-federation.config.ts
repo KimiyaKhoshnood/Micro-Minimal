@@ -17,7 +17,8 @@ export const mfConfig = {
     "./OrderDashboardDetailsView": "./src/modules/order-dashboard/order-dashboard-details/order-dashboard-details-view.tsx",
     "./CalendarDashboardView": "./src/modules/calendar-dashboard/calendar-dashboard-view.tsx",
     "./AnalyticsDashboardView": "./src/modules/analytics-dashboard/analytics-dashboard-view.tsx",
-    "./BankingDashboardView": "./src/modules/banking-dashboard/banking-dashboard-view.tsx"
+    "./BankingDashboardView": "./src/modules/banking-dashboard/banking-dashboard-view.tsx",
+    "./MailDashboardView": "./src/modules/mail-dashboard/mail-dashboard-view.tsx",
   },
   shared: ["react", "react-dom"],
 };
