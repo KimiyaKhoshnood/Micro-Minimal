@@ -11,6 +11,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import { HeaderSection } from './header-section';
 import { IconButton, SvgIcon } from '@mui/material';
 import { WorkspacesPopover } from './workspaces-popover';
+import { AccountDrawer } from './account-drawer';
 // import { Searchbar } from '../components/searchbar';
 // import { MenuButton } from '../components/menu-button';
 // import { SignInButton } from '../components/sign-in-button';
@@ -164,7 +165,7 @@ export function HeaderBase({
               {/* {settings && <SettingsButton data-slot="settings" />} */}
 
               {/* -- Account drawer -- */}
-              {/* {account && <AccountDrawer data-slot="account" data={data?.account} />} */}
+              {account && <AccountDrawer data-slot="account" data={data?.account} />}
 
               {/* -- Sign in button -- */}
               {/* {signIn && <SignInButton />} */}

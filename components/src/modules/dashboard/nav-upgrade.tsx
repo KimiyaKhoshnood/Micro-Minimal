@@ -26,7 +26,7 @@ export function useMockedUser() {
     id: '8864c717-587d-472a-929a-8e5f298024da-0',
     displayName: 'Jaydon Frankie',
     email: 'demo@minimals.cc',
-    photoURL: "/assets/background/background-24.webp",
+    photoURL: "/assets/images/avatar/avatar-6.webp",
     phoneNumber: "+61 2 9876 5432",
     country: "India",
     address: '90210 Broadway Blvd',

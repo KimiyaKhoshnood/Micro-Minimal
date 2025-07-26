@@ -12,7 +12,7 @@ import { SvgColor } from "../../component/svg-color/svg-color";
 
 // ----------------------------------------------------------------------
 
-const icon = (name: string) => <SvgColor src={`$/assets/icons/navbar/${name}.svg`} />;
+const icon = (name: string) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} />;
 
 const ICONS = {
   job: icon('ic-job'),
